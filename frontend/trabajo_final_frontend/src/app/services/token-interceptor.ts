@@ -20,15 +20,21 @@ export class TokenInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log('TOKEN: ' + this.loginService.getToken());
-    const tokenizeReq = req.clone({
-      setHeaders: {
-        //Con esto estamos agregando la cabecera “Authorization” a todas las
-        //peticiones que salgan desde el cliente
-        Authorization: `Bearer ${this.loginService.getToken()}`,
-      },
-    });
-    //Envía la nueva petición al servidor con el token ya incluido
+    const token = this.loginService.getToken();
+    console.log('TOKEN: ' + token);
+
+    // Si no hay token, no añadimos la cabecera Authorization (evita "Bearer null")
+    let tokenizeReq = req;
+    if (token) {
+      tokenizeReq = req.clone({
+        setHeaders: {
+          // Agregamos la cabecera "Authorization" solo cuando existe token
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    }
+
+    // Envía la petición (modificada o original) al servidor
     return next.handle(tokenizeReq);
   }
 }

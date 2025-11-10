@@ -14,14 +14,18 @@ export class AuthService {
 userRole(): string {
   const token = this.getToken();
   if (!token) {
-    return '';
+    // If there's no token, try stored rol in sessionStorage as a fallback
+    const storedRol = sessionStorage.getItem('rol');
+    return storedRol ? storedRol : '';
   }
   const payload = token.split('.')[1];
   try {
     const decoded = JSON.parse(atob(payload));
-    return decoded.rol || '';
+    // Prefer role embedded in the JWT; if missing, fallback to sessionStorage 'rol'
+    return decoded.rol || sessionStorage.getItem('rol') || '';
   } catch (e) {
-    return '';
+    const storedRol = sessionStorage.getItem('rol');
+    return storedRol ? storedRol : '';
   }
 }
 }

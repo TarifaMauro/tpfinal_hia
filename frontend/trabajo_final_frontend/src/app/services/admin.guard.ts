@@ -6,12 +6,16 @@ import { AuthService } from '../services/auth.service'; // Ajusta la ruta según
 export class AdminGuard implements CanActivate {
   constructor(@Inject(AuthService) private auth: AuthService, private router: Router) {}
 
-canActivate(): boolean {
-  const role = this.auth.userRole();
-  if (!this.auth.isLoggedIn() || role !== 'administrador') {
-    this.router.navigate(['/**']);
-    return false;
+  canActivate(): boolean {
+    const role = this.auth.userRole();
+    // Aceptar ambas variantes que se usan en distintos lugares: 'admin' y 'administrador'
+    const allowed = ['admin', 'administrador'];
+
+    if (!this.auth.isLoggedIn() || !allowed.includes(role)) {
+      // Redirigir al home en lugar de a la ruta comodín (evita mostrar la página 404)
+      this.router.navigate(['/']);
+      return false;
+    }
+    return true;
   }
-  return true;
-}
 }

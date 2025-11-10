@@ -1,0 +1,70 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "PostgreSQL Cluster - HAProxy Write",
+      "Group": "Cluster",
+      "Host": "haproxy",
+      "Port": 5432,
+      "MaintenanceDB": "postgres",
+      "Username": "postgres",
+      "Password": "postgres123",
+      "SSLMode": "prefer",
+      "Comment": "HAProxy Write Pool - Solo Master"
+    },
+    "2": {
+      "Name": "PostgreSQL Cluster - HAProxy Read",
+      "Group": "Cluster",
+      "Host": "haproxy",
+      "Port": 5433,
+      "MaintenanceDB": "postgres",
+      "Username": "postgres",
+      "Password": "postgres123",
+      "SSLMode": "prefer",
+      "Comment": "HAProxy Read Pool - Solo Réplicas"
+    },
+    "3": {
+      "Name": "PostgreSQL Cluster - HAProxy Mixed",
+      "Group": "Cluster",
+      "Host": "haproxy",
+      "Port": 5434,
+      "MaintenanceDB": "postgres",
+      "Username": "postgres",
+      "Password": "postgres123",
+      "SSLMode": "prefer",
+      "Comment": "HAProxy Mixed Pool - Master + Réplicas"
+    },
+    "4": {
+      "Name": "PostgreSQL Master (Direct)",
+      "Group": "Direct Access",
+      "Host": "postgres-master",
+      "Port": 5432,
+      "MaintenanceDB": "postgres",
+      "Username": "postgres",
+      "Password": "postgres123",
+      "SSLMode": "prefer",
+      "Comment": "Conexión directa al Master"
+    },
+    "5": {
+      "Name": "PostgreSQL Replica 1 (Direct)",
+      "Group": "Direct Access",
+      "Host": "postgres-replica1",
+      "Port": 5432,
+      "MaintenanceDB": "postgres",
+      "Username": "postgres",
+      "Password": "postgres123",
+      "SSLMode": "prefer",
+      "Comment": "Conexión directa a Réplica 1"
+    },
+    "6": {
+      "Name": "PostgreSQL Replica 2 (Direct)",
+      "Group": "Direct Access",
+      "Host": "postgres-replica2",
+      "Port": 5432,
+      "MaintenanceDB": "postgres",
+      "Username": "postgres",
+      "Password": "postgres123",
+      "SSLMode": "prefer",
+      "Comment": "Conexión directa a Réplica 2"
+    }
+  }
+}

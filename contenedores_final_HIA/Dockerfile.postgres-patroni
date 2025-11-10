@@ -1,0 +1,19 @@
+FROM postgres:15
+
+# Instalar dependencias
+RUN apt-get update && \
+    apt-get install -y python3-pip python3-dev libpq-dev gcc python3-venv && \
+    rm -rf /var/lib/apt/lists/*
+
+# Crear entorno virtual para Patroni
+RUN python3 -m venv /opt/patroni
+
+# Instalar Patroni y psycopg2 en el entorno virtual
+RUN /opt/patroni/bin/pip install patroni[etcd] psycopg2-binary
+
+# Crear script de inicio que ejecuta como usuario postgres
+RUN echo '#!/bin/bash\nsu - postgres -c "/opt/patroni/bin/patroni /etc/patroni.yml"' > /usr/local/bin/start-patroni.sh && \
+    chmod +x /usr/local/bin/start-patroni.sh
+
+# Comando por defecto
+CMD ["/usr/local/bin/start-patroni.sh"]

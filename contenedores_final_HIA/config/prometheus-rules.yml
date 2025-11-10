@@ -1,0 +1,107 @@
+groups:
+  - name: postgresql
+    rules:
+      - alert: PostgreSQLDown
+        expr: pg_up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "PostgreSQL instance is down"
+          description: "PostgreSQL instance {{ $labels.instance }} has been down for more than 1 minute."
+
+      - alert: PostgreSQLHighConnections
+        expr: pg_stat_database_numbackends / pg_settings_max_connections * 100 > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "PostgreSQL high connections usage"
+          description: "PostgreSQL instance {{ $labels.instance }} has {{ $value }}% connections usage."
+
+      - alert: PostgreSQLSlowQueries
+        expr: rate(pg_stat_database_tup_returned[5m]) < 0.1
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "PostgreSQL slow queries detected"
+          description: "PostgreSQL instance {{ $labels.instance }} has slow query performance."
+
+      - alert: PostgreSQLReplicationLag
+        expr: pg_stat_replication_lag > 300
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "PostgreSQL replication lag is high"
+          description: "PostgreSQL replication lag is {{ $value }} seconds on {{ $labels.instance }}."
+
+  - name: patroni
+    rules:
+      - alert: PatroniLeaderDown
+        expr: patroni_leader == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Patroni leader is down"
+          description: "Patroni leader is down for more than 1 minute on {{ $labels.instance }}."
+
+      - alert: PatroniReplicaDown
+        expr: patroni_replica == 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Patroni replica is down"
+          description: "Patroni replica is down for more than 5 minutes on {{ $labels.instance }}."
+
+  - name: haproxy
+    rules:
+      - alert: HAProxyBackendDown
+        expr: haproxy_backend_servers_down > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "HAProxy backend server is down"
+          description: "HAProxy backend server {{ $labels.server }} is down in {{ $labels.backend }}."
+
+      - alert: HAProxyHighResponseTime
+        expr: haproxy_backend_response_time > 1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "HAProxy high response time"
+          description: "HAProxy backend {{ $labels.backend }} has high response time: {{ $value }}s."
+
+  - name: system
+    rules:
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage detected"
+          description: "CPU usage is above 80% for more than 5 minutes on {{ $labels.instance }}."
+
+      - alert: HighMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 90
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage detected"
+          description: "Memory usage is above 90% for more than 5 minutes on {{ $labels.instance }}."
+
+      - alert: DiskSpaceLow
+        expr: (1 - (node_filesystem_avail_bytes / node_filesystem_size_bytes)) * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Disk space is low"
+          description: "Disk space usage is above 85% for more than 5 minutes on {{ $labels.instance }}."

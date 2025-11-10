@@ -1,0 +1,3001 @@
+[INFO] Nodo líder detectado: postgres-replica2
+
+=== OPTIMIZACIÓN INTELIGENTE DE PARÁMETROS CON IA (PATRONI + YAML) ===
+
+
+Probando: shared_buffers=512MB, work_mem=4MB, max_connections=89
+[YAML] Actualizado: shared_buffers=512MB, work_mem=4MB, max_connections=89
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[INFO] pgbench exitoso en intento 1. TPS: 213.21995
+TPS obtenido: 213.21995
+
+Probando: shared_buffers=256MB, work_mem=8MB, max_connections=55
+[YAML] Actualizado: shared_buffers=256MB, work_mem=8MB, max_connections=55
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[INFO] pgbench exitoso en intento 1. TPS: 223.383015
+TPS obtenido: 223.383015
+
+Probando: shared_buffers=256MB, work_mem=8MB, max_connections=57
+[YAML] Actualizado: shared_buffers=256MB, work_mem=8MB, max_connections=57
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[INFO] pgbench exitoso en intento 1. TPS: 198.60202
+TPS obtenido: 198.60202
+
+Probando: shared_buffers=256MB, work_mem=4MB, max_connections=86
+[YAML] Actualizado: shared_buffers=256MB, work_mem=4MB, max_connections=86
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[INFO] pgbench exitoso en intento 1. TPS: 203.653125
+TPS obtenido: 203.653125
+
+Probando: shared_buffers=512MB, work_mem=4MB, max_connections=100
+[YAML] Actualizado: shared_buffers=512MB, work_mem=4MB, max_connections=100
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[INFO] pgbench exitoso en intento 1. TPS: 219.615754
+TPS obtenido: 219.615754
+
+Probando: shared_buffers=256MB, work_mem=8MB, max_connections=50
+[YAML] Actualizado: shared_buffers=256MB, work_mem=8MB, max_connections=50
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[INFO] pgbench exitoso en intento 1. TPS: 243.583534
+TPS obtenido: 243.583534
+
+Probando: shared_buffers=128MB, work_mem=8MB, max_connections=70
+[YAML] Actualizado: shared_buffers=128MB, work_mem=8MB, max_connections=70
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[INFO] pgbench exitoso en intento 1. TPS: 242.686195
+TPS obtenido: 242.686195
+
+Probando: shared_buffers=128MB, work_mem=16MB, max_connections=62
+[YAML] Actualizado: shared_buffers=128MB, work_mem=16MB, max_connections=62
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[INFO] pgbench exitoso en intento 1. TPS: 238.95006
+TPS obtenido: 238.95006
+
+Probando: shared_buffers=128MB, work_mem=8MB, max_connections=69
+[YAML] Actualizado: shared_buffers=128MB, work_mem=8MB, max_connections=69
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[INFO] pgbench exitoso en intento 1. TPS: 434.380945
+TPS obtenido: 434.380945
+
+Probando: shared_buffers=512MB, work_mem=8MB, max_connections=93
+[YAML] Actualizado: shared_buffers=512MB, work_mem=8MB, max_connections=93
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[INFO] pgbench exitoso en intento 1. TPS: 433.923514
+TPS obtenido: 433.923514
+
+Mejor configuración encontrada:
+  shared_buffers: 128MB
+  work_mem: 8MB
+  max_connections: 69
+  Mejor TPS: 434.380945
+[INFO] Nodo líder detectado: postgres-master
+
+=== OPTIMIZACIÓN INTELIGENTE DE PARÁMETROS CON IA (PATRONI + YAML) ===
+
+
+Probando: shared_buffers=512MB, work_mem=4MB, max_connections=89
+[YAML] Actualizado: shared_buffers=512MB, work_mem=4MB, max_connections=89
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[INFO] pgbench exitoso en intento 1. TPS: 370.391956
+TPS obtenido: 370.391956
+
+Probando: shared_buffers=256MB, work_mem=8MB, max_connections=55
+[YAML] Actualizado: shared_buffers=256MB, work_mem=8MB, max_connections=55
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[INFO] pgbench exitoso en intento 1. TPS: 333.225366
+TPS obtenido: 333.225366
+
+Probando: shared_buffers=256MB, work_mem=8MB, max_connections=57
+[YAML] Actualizado: shared_buffers=256MB, work_mem=8MB, max_connections=57
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[INFO] pgbench exitoso en intento 1. TPS: 283.313058
+TPS obtenido: 283.313058
+
+Probando: shared_buffers=256MB, work_mem=4MB, max_connections=86
+[YAML] Actualizado: shared_buffers=256MB, work_mem=4MB, max_connections=86
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[WARN] pgbench falló o TPS=0 en intento 1. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + -3944 WHERE aid = 74223;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 4512 WHERE aid = 60005;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + 2661 WHERE aid = 70478;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + -1306 WHERE aid = 18095;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + 3057 WHERE aid = 69880;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + -200 WHERE aid = 4682;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -4813 WHERE aid = 61932;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + 2560 WHERE aid = 90638;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + -4763 WHERE aid = 78579;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + 3698 WHERE aid = 2688;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 2. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench: error: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: No such file or directory
+	Is the server running locally and accepting connections on that socket?
+pgbench: error: could not create connection for setup
+
+[WARN] pgbench falló o TPS=0 en intento 3. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 565 WHERE aid = 71717;
+pgbench: client 1 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -4039 WHERE aid = 40802;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + 556 WHERE aid = 61904;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + -3002 WHERE aid = 17861;
+pgbench: client 8 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + -1973 WHERE aid = 75260;
+pgbench: client 0 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + 2860 WHERE aid = 12818;
+pgbench: client 4 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + 123 WHERE aid = 65869;
+pgbench: client 9 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + -4343 WHERE aid = 1365;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + -4635 WHERE aid = 71574;
+pgbench: client 3 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + 4061 WHERE aid = 62970;
+pgbench: client 5 receiving
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 4. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + 2120 WHERE aid = 5331;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 2127 WHERE aid = 5779;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + -95 WHERE aid = 37905;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + -3993 WHERE aid = 84584;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + 3199 WHERE aid = 40876;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + 4925 WHERE aid = 94509;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -465 WHERE aid = 84484;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + -4800 WHERE aid = 16358;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + 1640 WHERE aid = 30617;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + 2542 WHERE aid = 64115;
+pgbench: client 9 receiving
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 5. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + 3961 WHERE aid = 88887;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 3956 WHERE aid = 79035;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + -1908 WHERE aid = 54988;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + -891 WHERE aid = 50607;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + -4456 WHERE aid = 29085;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + 4321 WHERE aid = 35198;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -2373 WHERE aid = 19260;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + -2406 WHERE aid = 2703;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + 1285 WHERE aid = 39470;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + 2808 WHERE aid = 77770;
+pgbench: client 9 receiving
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[ERROR] pgbench falló tras varios intentos. Se devuelve TPS=0.
+TPS obtenido: 0
+
+Probando: shared_buffers=512MB, work_mem=4MB, max_connections=100
+[YAML] Actualizado: shared_buffers=512MB, work_mem=4MB, max_connections=100
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[WARN] pgbench falló o TPS=0 en intento 1. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + 1596 WHERE aid = 99635;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 4667 WHERE aid = 79050;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + -2106 WHERE aid = 37409;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + -3780 WHERE aid = 25090;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + 3457 WHERE aid = 33599;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + 330 WHERE aid = 50767;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -3152 WHERE aid = 56205;
+pgbench: client 6 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + 980 WHERE aid = 14117;
+pgbench: client 8 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + 1332 WHERE aid = 18671;
+pgbench: client 7 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + 2341 WHERE aid = 81183;
+pgbench: client 9 receiving
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 2. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + -1830 WHERE aid = 62647;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 251 WHERE aid = 27818;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + -3282 WHERE aid = 27065;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + -4788 WHERE aid = 66157;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + 755 WHERE aid = 93972;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + -1645 WHERE aid = 95720;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -3653 WHERE aid = 55733;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + -3126 WHERE aid = 48340;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + -1354 WHERE aid = 68435;
+pgbench: client 8 receiving
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + 2747 WHERE aid = 25636;
+pgbench: client 9 receiving
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 3. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + 1647 WHERE aid = 14759;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + -3046 WHERE aid = 83440;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + -3101 WHERE aid = 14734;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + -2152 WHERE aid = 84073;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + 1133 WHERE aid = 81145;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + 2906 WHERE aid = 82120;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -2822 WHERE aid = 95255;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + -3278 WHERE aid = 89357;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + -1121 WHERE aid = 42671;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + -4049 WHERE aid = 46930;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 4. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + 1644 WHERE aid = 4567;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 2139 WHERE aid = 26187;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + 4260 WHERE aid = 78656;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + -2591 WHERE aid = 75001;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + 723 WHERE aid = 67971;
+pgbench: client 4 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -499 WHERE aid = 96091;
+pgbench: client 6 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + -3628 WHERE aid = 11988;
+pgbench: client 9 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + -4879 WHERE aid = 82327;
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + -657 WHERE aid = 52793;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + -647 WHERE aid = 15532;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 5. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + 1128 WHERE aid = 2665;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 3894 WHERE aid = 117;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + 3631 WHERE aid = 14425;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + 893 WHERE aid = 71123;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + 3622 WHERE aid = 10284;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + -2284 WHERE aid = 73123;
+pgbench: client 5 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + -1495 WHERE aid = 96844;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + -1538 WHERE aid = 44076;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + -4110 WHERE aid = 50069;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -2827 WHERE aid = 88018;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[ERROR] pgbench falló tras varios intentos. Se devuelve TPS=0.
+TPS obtenido: 0
+
+Probando: shared_buffers=256MB, work_mem=8MB, max_connections=50
+[YAML] Actualizado: shared_buffers=256MB, work_mem=8MB, max_connections=50
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[WARN] pgbench falló o TPS=0 en intento 1. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + 537 WHERE aid = 79885;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 3919 WHERE aid = 3022;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + -1663 WHERE aid = 45269;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + 1449 WHERE aid = 32110;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + -62 WHERE aid = 73251;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + -284 WHERE aid = 27932;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -2751 WHERE aid = 96722;
+pgbench: client 6 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + 2995 WHERE aid = 99701;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + -1898 WHERE aid = 72624;
+pgbench: client 9 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + 2222 WHERE aid = 54625;
+pgbench: client 7 receiving
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 2. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + 1201 WHERE aid = 36237;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 2592 WHERE aid = 34220;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + -249 WHERE aid = 30486;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + 2213 WHERE aid = 53825;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + 1583 WHERE aid = 52351;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + 4534 WHERE aid = 83544;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + 2936 WHERE aid = 64276;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + -3813 WHERE aid = 96459;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + 4408 WHERE aid = 68891;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + -2108 WHERE aid = 65156;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 3. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + -3122 WHERE aid = 13299;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 1416 WHERE aid = 4402;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + -3754 WHERE aid = 20402;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + -1756 WHERE aid = 16619;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + 809 WHERE aid = 4434;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + 4825 WHERE aid = 49497;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -693 WHERE aid = 62840;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + 1379 WHERE aid = 52575;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + -1766 WHERE aid = 73183;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + -4135 WHERE aid = 76767;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 4. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + 4101 WHERE aid = 34741;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + -131 WHERE aid = 34785;
+pgbench: client 1 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + -4941 WHERE aid = 23436;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + -1423 WHERE aid = 95426;
+pgbench: client 5 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + -2526 WHERE aid = 29902;
+pgbench: client 8 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + -340 WHERE aid = 52504;
+pgbench: client 2 receiving
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + -3239 WHERE aid = 62642;
+pgbench: client 3 receiving
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + 786 WHERE aid = 8798;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + -4800 WHERE aid = 84366;
+pgbench: client 7 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + -4710 WHERE aid = 57455;
+pgbench: client 9 receiving
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 5. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 262 WHERE aid = 44563;
+pgbench: client 1 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + -3574 WHERE aid = 70668;
+pgbench: client 3 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + 4249 WHERE aid = 55260;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + 3206 WHERE aid = 59058;
+pgbench: client 6 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + 2747 WHERE aid = 45586;
+pgbench: client 2 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + -432 WHERE aid = 33545;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + -1255 WHERE aid = 16061;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + 3711 WHERE aid = 57599;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + -3015 WHERE aid = 35260;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + -420 WHERE aid = 33253;
+pgbench: client 4 receiving
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[ERROR] pgbench falló tras varios intentos. Se devuelve TPS=0.
+TPS obtenido: 0
+
+Probando: shared_buffers=128MB, work_mem=8MB, max_connections=70
+[YAML] Actualizado: shared_buffers=128MB, work_mem=8MB, max_connections=70
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[WARN] pgbench falló o TPS=0 en intento 1. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + -1273 WHERE aid = 58418;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 1978 WHERE aid = 99555;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + -2136 WHERE aid = 12826;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + 3925 WHERE aid = 55721;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + -520 WHERE aid = 34818;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + 1355 WHERE aid = 53613;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -1485 WHERE aid = 32715;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + 3208 WHERE aid = 25062;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + 2997 WHERE aid = 79729;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + 3472 WHERE aid = 75320;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 2. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + -3109 WHERE aid = 12257;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + -1548 WHERE aid = 35375;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + 3877 WHERE aid = 46063;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + 3215 WHERE aid = 78724;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + -1798 WHERE aid = 89294;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + 1779 WHERE aid = 2669;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -1481 WHERE aid = 75837;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + -603 WHERE aid = 59218;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + -3139 WHERE aid = 51630;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + -457 WHERE aid = 21560;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 3. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + -1665 WHERE aid = 36513;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + -1866 WHERE aid = 82940;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + 1189 WHERE aid = 85437;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + -3092 WHERE aid = 74905;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + 4558 WHERE aid = 56366;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + 3800 WHERE aid = 35276;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -1545 WHERE aid = 73164;
+pgbench: client 6 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + 3278 WHERE aid = 69393;
+pgbench: client 8 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + -509 WHERE aid = 23338;
+pgbench: client 7 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + 4703 WHERE aid = 95150;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 4. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + 2082 WHERE aid = 16688;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 2761 WHERE aid = 27830;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + -1795 WHERE aid = 44159;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + 3861 WHERE aid = 54224;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + -4285 WHERE aid = 72144;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + -3606 WHERE aid = 92756;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -2256 WHERE aid = 53036;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + -4435 WHERE aid = 61091;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + 4597 WHERE aid = 20319;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + -437 WHERE aid = 90280;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[WARN] pgbench falló o TPS=0 en intento 5. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + 3886 WHERE aid = 93023;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + -1343 WHERE aid = 29736;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + 1798 WHERE aid = 187;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + 3490 WHERE aid = 87949;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + 3092 WHERE aid = 15175;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + 4439 WHERE aid = 71531;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + -3994 WHERE aid = 82768;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + 2292 WHERE aid = 74603;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + 2522 WHERE aid = 59551;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + 4487 WHERE aid = 78966;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+
+[ERROR] pgbench falló tras varios intentos. Se devuelve TPS=0.
+TPS obtenido: 0
+
+Probando: shared_buffers=128MB, work_mem=16MB, max_connections=62
+[YAML] Actualizado: shared_buffers=128MB, work_mem=16MB, max_connections=62
+[INFO] Contenedor reiniciado. Esperando a que PostgreSQL esté disponible...
+[WAIT] PostgreSQL no está listo, reintentando en 5s...
+[INFO] PostgreSQL está listo para aceptar conexiones.
+[WARN] pgbench falló o TPS=0 en intento 1. Esperando 8s y reintentando...
+[DEBUG] Salida completa de pgbench:
+pgbench (15.14 (Debian 15.14-1.pgdg13+1))
+transaction type: <builtin: TPC-B (sort of)>
+scaling factor: 1
+query mode: simple
+number of clients: 10
+number of threads: 1
+maximum number of tries: 1
+duration: 30 s
+number of transactions actually processed: 0
+number of failed transactions: 0 (NaN%)
+pgbench: pghost: /var/run/postgresql pgport: 5432 nclients: 10 duration: 30 dbName: postgres
+starting vacuum...pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute VACUUM during recovery
+pgbench: detail: (ignoring this error and continuing anyway)
+pgbench: error: ERROR:  cannot execute TRUNCATE TABLE in a read-only transaction
+pgbench: detail: (ignoring this error and continuing anyway)
+end.
+pgbench: client 0 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 0 executing \set aid
+pgbench: client 0 executing \set bid
+pgbench: client 0 executing \set tid
+pgbench: client 0 executing \set delta
+pgbench: client 0 sending BEGIN;
+pgbench: client 0 receiving
+pgbench: client 1 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 1 executing \set aid
+pgbench: client 1 executing \set bid
+pgbench: client 1 executing \set tid
+pgbench: client 1 executing \set delta
+pgbench: client 1 sending BEGIN;
+pgbench: client 1 receiving
+pgbench: client 2 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 2 executing \set aid
+pgbench: client 2 executing \set bid
+pgbench: client 2 executing \set tid
+pgbench: client 2 executing \set delta
+pgbench: client 2 sending BEGIN;
+pgbench: client 2 receiving
+pgbench: client 3 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 3 executing \set aid
+pgbench: client 3 executing \set bid
+pgbench: client 3 executing \set tid
+pgbench: client 3 executing \set delta
+pgbench: client 3 sending BEGIN;
+pgbench: client 3 receiving
+pgbench: client 4 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 4 executing \set aid
+pgbench: client 4 executing \set bid
+pgbench: client 4 executing \set tid
+pgbench: client 4 executing \set delta
+pgbench: client 4 sending BEGIN;
+pgbench: client 4 receiving
+pgbench: client 5 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 5 executing \set aid
+pgbench: client 5 executing \set bid
+pgbench: client 5 executing \set tid
+pgbench: client 5 executing \set delta
+pgbench: client 5 sending BEGIN;
+pgbench: client 5 receiving
+pgbench: client 6 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 6 executing \set aid
+pgbench: client 6 executing \set bid
+pgbench: client 6 executing \set tid
+pgbench: client 6 executing \set delta
+pgbench: client 6 sending BEGIN;
+pgbench: client 6 receiving
+pgbench: client 7 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 7 executing \set aid
+pgbench: client 7 executing \set bid
+pgbench: client 7 executing \set tid
+pgbench: client 7 executing \set delta
+pgbench: client 7 sending BEGIN;
+pgbench: client 7 receiving
+pgbench: client 8 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 8 executing \set aid
+pgbench: client 8 executing \set bid
+pgbench: client 8 executing \set tid
+pgbench: client 8 executing \set delta
+pgbench: client 8 sending BEGIN;
+pgbench: client 8 receiving
+pgbench: client 9 executing script "<builtin: TPC-B (sort of)>"
+pgbench: client 9 executing \set aid
+pgbench: client 9 executing \set bid
+pgbench: client 9 executing \set tid
+pgbench: client 9 executing \set delta
+pgbench: client 9 sending BEGIN;
+pgbench: client 9 receiving
+pgbench: client 0 receiving
+pgbench: client 0 sending UPDATE pgbench_accounts SET abalance = abalance + 3304 WHERE aid = 83411;
+pgbench: client 0 receiving
+pgbench: client 1 receiving
+pgbench: client 1 sending UPDATE pgbench_accounts SET abalance = abalance + 1267 WHERE aid = 60781;
+pgbench: client 1 receiving
+pgbench: client 2 receiving
+pgbench: client 2 sending UPDATE pgbench_accounts SET abalance = abalance + 215 WHERE aid = 93419;
+pgbench: client 2 receiving
+pgbench: client 3 receiving
+pgbench: client 3 sending UPDATE pgbench_accounts SET abalance = abalance + -4111 WHERE aid = 56901;
+pgbench: client 3 receiving
+pgbench: client 4 receiving
+pgbench: client 4 sending UPDATE pgbench_accounts SET abalance = abalance + 3365 WHERE aid = 37751;
+pgbench: client 4 receiving
+pgbench: client 5 receiving
+pgbench: client 5 sending UPDATE pgbench_accounts SET abalance = abalance + -3165 WHERE aid = 24978;
+pgbench: client 5 receiving
+pgbench: client 6 receiving
+pgbench: client 6 sending UPDATE pgbench_accounts SET abalance = abalance + 3313 WHERE aid = 10462;
+pgbench: client 6 receiving
+pgbench: client 7 receiving
+pgbench: client 7 sending UPDATE pgbench_accounts SET abalance = abalance + -2129 WHERE aid = 51785;
+pgbench: client 7 receiving
+pgbench: client 8 receiving
+pgbench: client 8 sending UPDATE pgbench_accounts SET abalance = abalance + 3088 WHERE aid = 41111;
+pgbench: client 8 receiving
+pgbench: client 9 receiving
+pgbench: client 9 sending UPDATE pgbench_accounts SET abalance = abalance + -4292 WHERE aid = 75742;
+pgbench: client 9 receiving
+pgbench: client 1 receiving
+pgbench: error: client 1 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 6 receiving
+pgbench: error: client 6 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 9 receiving
+pgbench: error: client 9 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 4 receiving
+pgbench: error: client 4 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 0 receiving
+pgbench: error: client 0 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 2 receiving
+pgbench: error: client 2 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 3 receiving
+pgbench: error: client 3 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 8 receiving
+pgbench: error: client 8 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 7 receiving
+pgbench: error: client 7 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: client 5 receiving
+pgbench: error: client 5 script 0 aborted in command 5 query 0: ERROR:  cannot execute UPDATE in a read-only transaction
+pgbench: error: Run was aborted; the above results are incomplete.
+

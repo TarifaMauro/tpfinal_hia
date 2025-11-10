@@ -1,0 +1,260 @@
+version: '3.8'
+
+services:
+  # Etcd cluster para coordinación de Patroni
+  etcd1:
+    image: quay.io/coreos/etcd:v3.5.9
+    container_name: etcd1
+    environment:
+      - ETCD_NAME=etcd1
+      - ETCD_DATA_DIR=/etcd-data
+      - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379
+      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd1:2379
+      - ETCD_LISTEN_PEER_URLS=http://0.0.0.0:2380
+      - ETCD_INITIAL_ADVERTISE_PEER_URLS=http://etcd1:2380
+      - ETCD_INITIAL_CLUSTER=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380
+      - ETCD_INITIAL_CLUSTER_TOKEN=etcd-cluster-1
+      - ETCD_INITIAL_CLUSTER_STATE=new
+    command: etcd
+    volumes:
+      - etcd1_data:/etcd-data
+    networks:
+      - postgres-cluster
+
+  etcd2:
+    image: quay.io/coreos/etcd:v3.5.9
+    container_name: etcd2
+    environment:
+      - ETCD_NAME=etcd2
+      - ETCD_DATA_DIR=/etcd-data
+      - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379
+      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd2:2379
+      - ETCD_LISTEN_PEER_URLS=http://0.0.0.0:2380
+      - ETCD_INITIAL_ADVERTISE_PEER_URLS=http://etcd2:2380
+      - ETCD_INITIAL_CLUSTER=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380
+      - ETCD_INITIAL_CLUSTER_TOKEN=etcd-cluster-1
+      - ETCD_INITIAL_CLUSTER_STATE=new
+    command: etcd
+    volumes:
+      - etcd2_data:/etcd-data
+    networks:
+      - postgres-cluster
+
+  etcd3:
+    image: quay.io/coreos/etcd:v3.5.9
+    container_name: etcd3
+    environment:
+      - ETCD_NAME=etcd3
+      - ETCD_DATA_DIR=/etcd-data
+      - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379
+      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd3:2379
+      - ETCD_LISTEN_PEER_URLS=http://0.0.0.0:2380
+      - ETCD_INITIAL_ADVERTISE_PEER_URLS=http://etcd3:2380
+      - ETCD_INITIAL_CLUSTER=etcd1=http://etcd1:2380,etcd2=http://etcd2:2380,etcd3=http://etcd3:2380
+      - ETCD_INITIAL_CLUSTER_TOKEN=etcd-cluster-1
+      - ETCD_INITIAL_CLUSTER_STATE=new
+    command: etcd
+    volumes:
+      - etcd3_data:/etcd-data
+    networks:
+      - postgres-cluster
+
+  # PostgreSQL Master con Patroni
+  postgres-master:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres-patroni
+    container_name: postgres-master
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_master_data:/var/lib/postgresql/data
+      - ./config/patroni-master.yml:/etc/patroni.yml:ro
+      - ./scripts/init-master.sh:/docker-entrypoint-initdb.d/init-master.sh:ro
+    depends_on:
+      - etcd1
+      - etcd2
+      - etcd3
+    networks:
+      - postgres-cluster
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  # PostgreSQL Replica 1 con Patroni
+  postgres-replica1:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres-patroni
+    container_name: postgres-replica1
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_replica1_data:/var/lib/postgresql/data
+      - ./config/patroni-replica1.yml:/etc/patroni.yml:ro
+      - ./scripts/init-replica.sh:/docker-entrypoint-initdb.d/init-replica.sh:ro
+    depends_on:
+      - etcd1
+      - etcd2
+      - etcd3
+      - postgres-master
+    networks:
+      - postgres-cluster
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+
+  # PostgreSQL Replica 2 con Patroni
+  postgres-replica2:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres-patroni
+    container_name: postgres-replica2
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_replica2_data:/var/lib/postgresql/data
+      - ./config/patroni-replica2.yml:/etc/patroni.yml:ro
+      - ./scripts/init-replica.sh:/docker-entrypoint-initdb.d/init-replica.sh:ro
+    depends_on:
+      - etcd1
+      - etcd2
+      - etcd3
+      - postgres-master
+    networks:
+      - postgres-cluster
+    ports:
+      - "5434:5432"
+    restart: unless-stopped
+
+  # HAProxy para balanceador de carga
+  haproxy:
+    image: haproxy:2.7
+    container_name: haproxy
+    volumes:
+      - ./config/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    ports:
+      - "5000:5000"  # Puerto para estadísticas HAProxy
+      - "5435:5432"  # Puerto para conexiones PostgreSQL
+    depends_on:
+      - postgres-master
+      - postgres-replica1
+      - postgres-replica2
+    networks:
+      - postgres-cluster
+    restart: unless-stopped
+
+  # Prometheus para monitoreo
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./config/prometheus-rules.yml:/etc/prometheus/prometheus-rules.yml:ro
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    networks:
+      - postgres-cluster
+
+  # Grafana para visualización
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./config/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./config/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - postgres-cluster
+
+  # Node Exporter para métricas del sistema
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    networks:
+      - postgres-cluster
+
+  # Postgres Exporter para métricas de PostgreSQL
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter:latest
+    container_name: postgres-exporter
+    environment:
+      - DATA_SOURCE_NAME=postgresql://postgres:postgres123@postgres-master:5432/postgres?sslmode=disable
+    ports:
+      - "9187:9187"
+    depends_on:
+      - postgres-master
+    networks:
+      - postgres-cluster
+
+  # pgAdmin para administración de PostgreSQL
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@example.com
+      - PGADMIN_DEFAULT_PASSWORD=admin123
+      - PGADMIN_CONFIG_SERVER_MODE=False
+      - PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED=False
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./config/pgadmin/servers.json:/var/lib/pgadmin/servers.json:ro
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres-master
+      - postgres-replica1
+      - postgres-replica2
+    networks:
+      - postgres-cluster
+    restart: unless-stopped
+
+volumes:
+  etcd1_data:
+  etcd2_data:
+  etcd3_data:
+  postgres_master_data:
+  postgres_replica1_data:
+  postgres_replica2_data:
+  prometheus_data:
+  grafana_data:
+  pgadmin_data:
+
+networks:
+  postgres-cluster:
+    driver: bridge

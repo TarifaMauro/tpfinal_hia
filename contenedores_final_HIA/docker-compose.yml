@@ -80,8 +80,7 @@ services:
       - etcd3
     networks:
       - postgres-cluster
-    ports:
-      - "5432:5432"
+    # Puerto no expuesto al host - acceso solo a través de HAProxy
     restart: unless-stopped
 
   # PostgreSQL Replica 1 con Patroni
@@ -106,8 +105,7 @@ services:
       - postgres-master
     networks:
       - postgres-cluster
-    ports:
-      - "5433:5432"
+    # Puerto no expuesto al host - acceso solo a través de HAProxy
     restart: unless-stopped
 
   # PostgreSQL Replica 2 con Patroni
@@ -132,8 +130,7 @@ services:
       - postgres-master
     networks:
       - postgres-cluster
-    ports:
-      - "5434:5432"
+    # Puerto no expuesto al host - acceso solo a través de HAProxy
     restart: unless-stopped
 
   # HAProxy para balanceador de carga
@@ -144,7 +141,9 @@ services:
       - ./config/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
     ports:
       - "5000:5000"  # Puerto para estadísticas HAProxy
-      - "5435:5432"  # Puerto para conexiones PostgreSQL
+      - "5432:5432"  # Puerto para escritura (postgres-write)
+      - "5433:5433"  # Puerto para lectura (postgres-read)
+      - "5435:5434"  # Puerto para conexiones mixtas (postgres-mixed)
     depends_on:
       - postgres-master
       - postgres-replica1

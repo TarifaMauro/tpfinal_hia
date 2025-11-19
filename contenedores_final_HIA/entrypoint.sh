@@ -2,7 +2,7 @@
 set -e
 
 DB_HOST=${DB_HOST:-haproxy}
-DB_PORT=${DB_PORT:-5432}
+DB_PORT=${DB_PORT:-5434}
 DB_USER=${DB_USER:-postgres}
 
 MAX_RETRIES=${MAX_RETRIES:-120}

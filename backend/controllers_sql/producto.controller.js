@@ -1,8 +1,45 @@
 const { Product, ProductImage, ProductSize, Category } = require('../models_sql');
-
+const { Op } = require('sequelize');
 const ctrl = {};
 
 const { parseNumber, parseIntSafe, parseDateToISO } = require('./utils');
+
+ctrl.obtenerProductosPaginados = async (req, res) => {
+  try {
+    const page = Math.max(1, parseInt(req.query.page, 10) || 1);
+    const pageSize = Math.max(1, parseInt(req.query.pageSize, 10) || 25);
+    const q = (req.query.q || '').toString().trim();
+
+    const where = q ? {
+      [Op.or]: [
+        { nombre: { [Op.iLike]: `%${q}%` } },
+        { descripcion: { [Op.iLike]: `%${q}%` } }
+      ]
+    } : {};
+
+    const offset = (page - 1) * pageSize;
+
+    // findAndCountAll devuelve { rows, count }
+    const result = await Product.findAndCountAll({
+      where,
+      limit: pageSize,
+      offset,
+      order: [['createdAt', 'DESC']]
+    });
+
+    res.json({
+      items: result.rows,
+      total: result.count
+    });
+  } catch (err) {
+    console.error('Error obtenerProductosPaginados:', err);
+    res.status(500).json({ msg: 'Error interno al obtener productos' });
+  }
+};
+
+
+
+
 
 ctrl.createProducto = async (req, res) => {
   try {

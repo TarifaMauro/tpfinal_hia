@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, map, catchError, of, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -28,12 +28,6 @@ export interface ProductoResponse {
   msg: string;
   productos: Producto[];
 }
-export interface PaginacionRespuesta {
-  results: Producto[];
-  data: Producto[];
-  items: Producto[];
-  total: number;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -44,18 +38,16 @@ export class ProductoService {
 
   constructor(private http: HttpClient) { }
 
-  
-   obtenerProductos(): Observable<Producto[]> {
-     return this.http.get<ProductoResponse>(`${this.API_URL}/producto`)
-       .pipe(
-         map(response => response.productos || []),
-         catchError(error => {
-           console.error('Error al obtener productos:', error);
-           return of([]);
-         })
-       );
-   }
-
+  obtenerProductos(): Observable<Producto[]> {
+    return this.http.get<ProductoResponse>(`${this.API_URL}/producto`)
+      .pipe(
+        map(response => response.productos || []),
+        catchError(error => {
+          console.error('Error al obtener productos:', error);
+          return of([]);
+        })
+      );
+  }
 
   obtenerProductoPorId(id: string): Observable<Producto> {
     return this.http.get<Producto>(`${this.API_URL}/producto/${id}`);
@@ -99,14 +91,5 @@ actualizarProducto(id: string, producto: FormData): Observable<Producto> {
           return of([]);
         })
       );
-  }
-
-  obtenerProductosPaginados(page: number, limit: number, q?: string): Observable<PaginacionRespuesta> {
-    let params = new HttpParams()
-      .set('page', String(page))
-      .set('limit', String(limit));
-    if (q) params = params.set('q', q);
-
-    return this.http.get<PaginacionRespuesta>(`${this.API_URL}/producto/paginados`, { params });
   }
 }

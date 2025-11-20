@@ -246,25 +246,26 @@ services:
   # Backend Node.js
   backend:
     build:
-      context: ..
-      dockerfile: contenedores_final_HIA/Dockerfile.backend
+      context: .
+      dockerfile: Dockerfile.backend
     image: backend-image:latest
     container_name: backend-container
     ports:
       - "3001:3001"
-    # No usar volumen para evitar sobrescribir el código copiado en la imagen
-    # Si necesitas persistencia de datos, usa volúmenes específicos para uploads, etc.
+    # Use a named volume for backend so the image content is preserved
+    volumes:
+      - backend_data:/usr/src/app/backend
 
     depends_on:
         - haproxy  
 
     environment:
       - DB_HOST=haproxy
-      - DB_PORT=5434
+      - DB_PORT=5432
       - DB_USER=postgres
       - DB_PASSWORD=postgres123
       - DB_NAME=postgres
-      - PG_URI=postgres://postgres:postgres123@haproxy:5434/postgres
+      - PG_URI=postgres://postgres:postgres123@haproxy:5432/postgres
       - JWT_SECRET=Qw8!zP3@rT7vL2$kN9^bS5&xU1*eH6
       - NODE_ENV=development
       - PORT=3001  
@@ -281,6 +282,7 @@ volumes:
   prometheus_data:
   grafana_data:
   pgadmin_data:
+  backend_data:
 
 networks:
   postgres-cluster:

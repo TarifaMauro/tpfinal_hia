@@ -1,32 +1,28 @@
 # base image
 FROM node:lts-alpine3.22
 
-# Instalar netcat y postgresql-client (usado por el entrypoint para esperar la DB)
-RUN apk add --no-cache netcat-openbsd postgresql-client
+# Instalar git y netcat (usado por el entrypoint para esperar la DB)
+RUN apk add --no-cache git netcat-openbsd postgresql-client
 
 # Establecer el directorio de trabajo
-WORKDIR /usr/src/app/backend
+WORKDIR /usr/src/app
 
-# Copiar el código del backend desde el contexto local
-# El contexto en docker-compose es '..' (tpfinal_hia)
-# Por lo tanto, copiamos desde backend/
-COPY backend/package*.json ./
+# Clonar el repositorio de la aplicación
+RUN git clone https://github.com/ignaMartin22/tpfinal_hia.git .
+
+# Cambiar al directorio del backend
+# Cuando se clona el repo en '.', el backend queda en '/usr/src/app/backend'
+WORKDIR /usr/src/app/backend
 
 # Instalar dependencias de la aplicación
 RUN npm install
 
-# Copiar el resto del código del backend
-COPY backend/ .
-
 # Copiar entrypoint que espera a la DB antes de iniciar la app
-COPY contenedores_final_HIA/entrypoint.sh /entrypoint.sh
-# Convertir CRLF a LF y dar permisos de ejecución
-RUN sed -i 's/\r$//' /entrypoint.sh && \
-    chmod +x /entrypoint.sh
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Exponer el puerto en el que la aplicación se ejecutará
 EXPOSE 3000
 
 # Usa entrypoint para esperar la DB y luego ejecutar la app
-ENTRYPOINT ["/entrypoint.sh"]
-
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

@@ -29,6 +29,8 @@ export interface ProductoResponse {
   productos: Producto[];
 }
 export interface PaginacionRespuesta {
+  results: Producto[];
+  data: Producto[];
   items: Producto[];
   total: number;
 }
@@ -38,21 +40,22 @@ export interface PaginacionRespuesta {
 })
 export class ProductoService {
   private API_URL = environment.apiUrl;
-  private baseUrl = '/api'; // ajustar según tu configuración
   valorBusqueda = '';
 
   constructor(private http: HttpClient) { }
 
-  obtenerProductos(): Observable<Producto[]> {
-    return this.http.get<ProductoResponse>(`${this.API_URL}/producto`)
-      .pipe(
-        map(response => response.productos || []),
-        catchError(error => {
-          console.error('Error al obtener productos:', error);
-          return of([]);
-        })
-      );
-  }
+  
+   obtenerProductos(): Observable<Producto[]> {
+     return this.http.get<ProductoResponse>(`${this.API_URL}/producto`)
+       .pipe(
+         map(response => response.productos || []),
+         catchError(error => {
+           console.error('Error al obtener productos:', error);
+           return of([]);
+         })
+       );
+   }
+
 
   obtenerProductoPorId(id: string): Observable<Producto> {
     return this.http.get<Producto>(`${this.API_URL}/producto/${id}`);
@@ -104,6 +107,6 @@ actualizarProducto(id: string, producto: FormData): Observable<Producto> {
       .set('limit', String(limit));
     if (q) params = params.set('q', q);
 
-    return this.http.get<PaginacionRespuesta>(`${this.baseUrl}/productos`, { params });
+    return this.http.get<PaginacionRespuesta>(`${this.API_URL}/producto/paginados`, { params });
   }
 }

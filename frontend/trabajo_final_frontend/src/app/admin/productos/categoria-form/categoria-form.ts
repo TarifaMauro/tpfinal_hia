@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-categoria-form',
-  standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './categoria-form.html',
   styleUrl: './categoria-form.css'

@@ -2,71 +2,34 @@
   <div class="productos-admin-header">
     <h2>Gestión de Productos</h2>
   </div>
-
   <div class="productos-admin-menu">
     <button (click)="abrirModal()" class="btn-producto agregar" title="Agregar producto" data-bs-toggle="modal"
       data-bs-target="#modalProducto">
       <i class="fas fa-plus"></i> Nuevo Producto
     </button>
-
     <button class="btn-producto agregarCategoria" title="Agregar categoría" data-bs-target="#modalCategoria"
       data-bs-toggle="modal">
       <i class="fas fa-plus"></i> Nueva Categoría
     </button>
-
     <input type="text" class="input-busqueda" placeholder="Buscar producto..." autofocus
       [formControl]="busquedaControl" />
+
   </div>
-
-  <!-- Controles de paginación (arriba) -->
-  <nav class="mt-2 d-flex justify-content-between align-items-center" *ngIf="totalItems > 0">
-    <div>
-      <button class="btn btn-outline-secondary me-1" [disabled]="page <= 1" (click)="cambiarPagina(page - 1)">
-        Anterior
-      </button>
-      <button class="btn btn-outline-secondary" [disabled]="page >= totalPages" (click)="cambiarPagina(page + 1)">
-        Siguiente
-      </button>
-    </div>
-
-    <div class="d-flex align-items-center">
-      <span class="me-2">Página</span>
-
-      <select class="form-select me-2" style="width: 80px;" [(ngModel)]="page" (change)="cambiarPagina(page)">
-        <option *ngFor="let p of paginasArray" [ngValue]="p">{{ p }}</option>
-      </select>
-
-      <span class="me-2">/ {{ totalPages }}</span>
-
-      <select class="form-select me-2" style="width: 120px;" [(ngModel)]="pageSize" (change)="cambiarTamPagina()">
-        <option [value]="10">10</option>
-        <option [value]="25">25</option>
-        <option [value]="50">50</option>
-        <option [value]="100">100</option>
-      </select>
-      <span class="me-2">items por página</span>
-
-      <small class="text-muted ms-3">Mostrando {{ (page - 1) * pageSize + 1 }} - {{ Math.min(page * pageSize, totalItems) }} de {{ totalItems }}</small>
-    </div>
-  </nav>
-
-  <!-- Lista de productos paginada -->
-  <div class="productos-admin-content" *ngIf="productos && productos.length > 0; else sinResultados">
+  <div class="productos-admin-content" *ngIf="productos.length > 0">
     <div class="productos-lista">
+      <!-- Ejemplo de card de producto -->
       <div class="producto-card" *ngFor="let producto of productos">
-        <img *ngIf="producto.imagenes && producto.imagenes.length" [src]="producto.imagenes[0]" alt="{{ producto.nombre }}"
+        <img *ngIf="producto.imagenes?.length" [src]="producto.imagenes[0]" alt="{{ producto.nombre }}"
           class="producto-img">
         <div class="producto-info">
           <h4 class="producto-nombre">{{ producto.nombre }}</h4>
           <p class="producto-desc">{{ producto.descripcion }}</p>
-
-          <div class="producto-tallas" *ngIf="producto.tallas && producto.tallas.length > 0">
+          <div class="producto-tallas" *ngIf="producto.tallas.length > 0">
             <div class="m-0 talla-item" *ngFor="let talla of producto.tallas">
-              <p>{{ talla.talla }} / {{ talla.stock }}</p>
+              <p>{{talla.talla}} / {{talla.stock}}</p>
             </div>
           </div>
         </div>
-
         <span class="producto-precio">${{ producto.precio }}</span>
 
         <div class="producto-acciones">
@@ -78,43 +41,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Mensaje sin resultados -->
-  <ng-template #sinResultados>
-    <p class="text-center">No se encontraron productos.</p>
-  </ng-template>
-
-  <!-- Controles de paginación (abajo) -->
-  <nav class="mt-3 d-flex justify-content-between align-items-center" *ngIf="totalItems > 0">
-    <div>
-      <button class="btn btn-outline-secondary me-1" [disabled]="page <= 1" (click)="cambiarPagina(page - 1)">
-        Anterior
-      </button>
-      <button class="btn btn-outline-secondary" [disabled]="page >= totalPages" (click)="cambiarPagina(page + 1)">
-        Siguiente
-      </button>
-    </div>
-
-    <div class="d-flex align-items-center">
-      <span class="me-2">Página</span>
-
-      <select class="form-select me-2" style="width: 80px;" [(ngModel)]="page" (change)="cambiarPagina(page)">
-        <option *ngFor="let p of paginasArray" [ngValue]="p">{{ p }}</option>
-      </select>
-
-      <span class="me-2">/ {{ totalPages }}</span>
-
-      <select class="form-select me-2" style="width: 120px;" [(ngModel)]="pageSize" (change)="cambiarTamPagina()">
-        <option [value]="10">10</option>
-        <option [value]="25">25</option>
-        <option [value]="50">50</option>
-        <option [value]="100">100</option>
-      </select>
-      <span class="me-2">items por página</span>
-
-      <small class="text-muted ms-3">Mostrando {{ (page - 1) * pageSize + 1 }} - {{ Math.min(page * pageSize, totalItems) }} de {{ totalItems }}</small>
-    </div>
-  </nav>
 </div>
 
 <!-- Modal para agregar/editar producto -->
@@ -133,13 +59,12 @@
     </div>
   </div>
 </div>
-
 <!-- Modal para agregar categoría -->
 <div class="modal fade" id="modalCategoria" tabindex="-1" aria-labelledby="modalCategoriaLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalCategoriaLabel">Agregar/Editar categoría</h5>
+        <h5 class="modal-title" id="modalProductoLabel">Agregar/Editar categoría </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body">

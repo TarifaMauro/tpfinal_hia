@@ -21,10 +21,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MisValidadores } from '../../../validadores/mis-validadores';
 @Component({
   selector: 'app-producto-form',
-  standalone: true,
   imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './producto-form.html',
-  styleUrls: ['./producto-form.css']
+  styleUrl: './producto-form.css'
 })
 export class ProductoForm implements OnInit {
   @Input() producto: Producto | null = null; // Producto a editar o crear

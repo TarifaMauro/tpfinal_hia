@@ -89,14 +89,16 @@ export class Usuarios implements OnInit {
 
     this.loginService.obtenerUsuariosPaginados(this.page, this.pageSize, q).subscribe({
       next: (result) => {
-        // Soportar varias formas de respuesta: result.data, result.docs, o result (array)
-        this.usuarios = result.data || result.docs || result || [];
-
-        // Intentar extraer totalPages/totalItems si el backend los devuelve
-        this.totalPages = result.totalPages || Math.ceil((result.totalItems || this.usuarios.length) / this.pageSize) || 1;
-        this.totalItems = result.totalItems || result.count || this.usuarios.length;
-
-        // Construir array de páginas para el template
+        // Respuesta esperada: { items: [...], total: number }
+        this.usuarios = result.items || result.data || result.docs || [];
+        this.totalItems = result.total ?? result.totalItems ?? result.count ?? this.usuarios.length;
+        this.totalPages = Math.max(1, Math.ceil(this.totalItems / this.pageSize));
+        // Si la página actual quedó fuera de rango después de la consulta, ajusta y recarga
+        if (this.page > this.totalPages) {
+          this.page = this.totalPages;
+          this.cargarUsuarios(this.page);
+          return;
+        }
         this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
       },
       error: (error) => {

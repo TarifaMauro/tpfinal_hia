@@ -84,6 +84,11 @@ export class LoginService {
   }
 
   obtenerUsuariosPaginados(page: number, pageSize: number, q: string): Observable<any> {
-      return this._http.get(`${this.hostBase}paginados?page=${page}&pageSize=${pageSize}&q=${q}`);
+    const token = this.getToken();
+    const params = `?page=${page}&pageSize=${pageSize}&q=${encodeURIComponent(q || '')}`;
+    const options = token
+      ? { headers: this.httpOption.headers.set('Authorization', `Bearer ${token}`) }
+      : { headers: this.httpOption.headers };
+    return this._http.get<any>(`${this.hostBase}paginados${params}`, options);
   }
 }

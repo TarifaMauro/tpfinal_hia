@@ -3,6 +3,7 @@ import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoginService } from './services/login';
 import { RouterOutlet } from '@angular/router';
+import { AnalyticsService } from './services/analytics.service';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -11,4 +12,9 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css',
   providers: [LoginService], //servicio de login
 })
-export class App {}
+export class App {
+constructor(private analyticsService: AnalyticsService) {
+
+}
+
+}

@@ -1,4 +1,4 @@
-const { Product } = require('../models_sql');
+const { Product, Category, ProductImage, ProductSize } = require('../models_sql');
 const { Op } = require('sequelize');
 
 const ctrl = {};

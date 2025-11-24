@@ -9,13 +9,14 @@ const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
 const googleClient = new OAuth2Client(GOOGLE_CLIENT_ID);
 
 const ctrl = {};
-ctrl.obtenerUsuariosPaginados = async (req, res) => {
+ctrl.obtenerUsuariosCursor = async (req, res) => {
   try {
-    const page = Math.max(1, parseInt(req.query.page) || 1);
-    const pageSize = Math.min(100, parseInt(req.query.pageSize) || 25);
+    const cursor = parseInt(req.query.cursor) || null;
+    const limit = Math.min(100, parseInt(req.query.limit) || 25);
     const q = (req.query.q || '').trim();
 
     const where = {};
+
     if (q) {
       where[Op.or] = [
         { username: { [Op.iLike]: `%${q}%` } },
@@ -25,20 +26,32 @@ ctrl.obtenerUsuariosPaginados = async (req, res) => {
       ];
     }
 
-    const result = await User.findAndCountAll({
+    // Si hay cursor, filtramos por ID mayor al cursor
+    if (cursor) {
+      where.id = { [Op.gt]: cursor };
+    }
+
+    const users = await User.findAll({
       where,
-      limit: pageSize,
-      offset: (page - 1) * pageSize,
-      order: [['createdAt', 'DESC']],
+      limit,
+      order: [['id', 'ASC']],
       attributes: { exclude: ['password'] }
     });
 
-    return res.json({ items: result.rows, total: result.count });
+    const lastUser = users.length > 0 ? users[users.length - 1] : null;
+
+    return res.json({
+      items: users,
+      nextCursor: lastUser ? lastUser.id : null,
+      hasNext: users.length === limit
+    });
+
   } catch (err) {
-    console.error('Error obtenerUsuariosPaginados:', err);
+    console.error('Error obtenerUsuariosCursor:', err);
     return res.status(500).json({ msg: 'Error al obtener usuarios', error: err.message });
   }
 };
+
 ctrl.createUsuario = async (req, res) => {
   try {
     const camposSanitizados = {

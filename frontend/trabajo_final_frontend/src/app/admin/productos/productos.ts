@@ -5,7 +5,7 @@ import { ProductoForm } from './producto-form/producto-form';
 import { ToastrService } from 'ngx-toastr';
 import { CategoriaForm } from './categoria-form/categoria-form';
 import { FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, Subscription, switchMap, tap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, Subscription, tap } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,87 +16,66 @@ import Swal from 'sweetalert2';
   styleUrls: ['./productos.css']
 })
 export class Productos implements OnInit, OnDestroy {
-  // exponer Math para la plantilla AOT
-  public Math = Math;
 
   productos: Producto[] = [];
   productoSeleccionado: Producto | null = null;
   busquedaControl = new FormControl('');
   private sub = new Subscription();
 
-  // Paginación server-side
-  page = 1;
-  pageSize = 25;
-  totalItems = 0;
-  totalPages = 0;
-  paginasArray: number[] = [];
+  // Cursor pagination
+  cursor: number | null = null;
+  limit = 25;
+  hasNext = true;
+  loading = false;
 
-  constructor(private productoService: ProductoService, private toastr: ToastrService) { }
+  constructor(private productoService: ProductoService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    // búsqueda que consulta al backend (debounce)
+    // búsqueda con debounce -> reinicia todo
     this.sub.add(
       this.busquedaControl.valueChanges.pipe(
         debounceTime(300),
         distinctUntilChanged(),
-        tap(() => { this.page = 1; this.cargarProductos(); })
+        tap(() => this.resetAndLoad())
       ).subscribe()
     );
 
-    this.cargarProductos();
+    this.resetAndLoad();
   }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
 
+  // Reiniciar cursor + productos
+  resetAndLoad() {
+    this.cursor = null;
+    this.productos = [];
+    this.hasNext = true;
+    this.cargarProductos();
+  }
+
   cargarProductos(): void {
+    if (!this.hasNext || this.loading) return;
+
+    this.loading = true;
     const q = (this.busquedaControl.value || '').toString().trim();
-    this.productoService.obtenerProductosPaginados(this.page, this.pageSize, q).subscribe({
+
+    this.productoService.obtenerProductosCursor(this.cursor, this.limit, q).subscribe({
       next: (resp) => {
-        this.productos = resp.items || [];
-        this.totalItems = resp.total ?? 0;
-        this.totalPages = Math.max(1, Math.ceil(this.totalItems / this.pageSize));
-        if (this.page > this.totalPages) {
-          this.page = this.totalPages;
-          // recargar correctamente la página corregida
-          this.cargarProductos();
-          return;
-        }
-        this.generarPaginasArray();
+        this.productos.push(...resp.items);
+        this.cursor = resp.nextCursor;
+        this.hasNext = resp.hasNext;
+        this.loading = false;
       },
       error: () => {
-        this.productos = [];
-        this.totalItems = 0;
-        this.totalPages = 0;
-        this.paginasArray = [];
+        this.toastr.error('Error al cargar productos');
+        this.loading = false;
       }
     });
   }
 
-  cambiarPagina(n: number) {
-    if (n < 1) n = 1;
-    if (n > this.totalPages) n = this.totalPages;
-    this.page = n;
-    this.cargarProductos();
-  }
-
-  cambiarTamPagina() {
-    this.page = 1;
-    this.cargarProductos();
-  }
-
-  generarPaginasArray() {
-    const maxBotones = 10;
-    const paginas: number[] = [];
-    let start = Math.max(1, this.page - Math.floor(maxBotones / 2));
-    let end = Math.min(this.totalPages, start + maxBotones - 1);
-    if (end - start < maxBotones - 1) {
-      start = Math.max(1, end - maxBotones + 1);
-    }
-    for (let i = start; i <= end; i++) paginas.push(i);
-    this.paginasArray = paginas;
-  }
+  // --------- CRUD ---------
 
   abrirModal(producto?: Producto): void {
     this.productoSeleccionado = producto ?? null;
@@ -108,33 +87,34 @@ export class Productos implements OnInit, OnDestroy {
 
   guardarProducto(productoForm: FormData) {
     if (this.productoSeleccionado) {
-      // editar: recargar la página actual al completarse
+      // actualizar
       this.productoService.actualizarProducto(this.productoSeleccionado._id, productoForm).subscribe({
         next: () => {
           this.toastr.success('Producto actualizado con éxito');
           this.cerrarModal();
-          this.cargarProductos();
+          this.resetAndLoad();
         },
         error: (err) => {
-          this.toastr.error(err?.error?.msg ?? 'Error al actualizar el producto');
+          this.toastr.error(err?.error?.msg ?? 'Error al actualizar');
         }
       });
+
     } else {
-      // crear: recargar (o navegar a la última página si prefieres)
+      // crear
       this.productoService.crearProducto(productoForm).subscribe({
         next: () => {
           this.toastr.success('Producto creado con éxito');
           this.cerrarModal();
-          this.cargarProductos();
+          this.resetAndLoad();
         },
         error: (err) => {
-          this.toastr.error(err?.error?.msg ?? 'Error al crear el producto');
+          this.toastr.error(err?.error?.msg ?? 'Error al crear');
         }
       });
     }
   }
 
-  eliminarProducto(id: string): void {
+  eliminarProducto(id: string) {
     Swal.fire({
       title: '¿Eliminar producto?',
       text: 'Esta acción no se puede deshacer.',
@@ -144,32 +124,16 @@ export class Productos implements OnInit, OnDestroy {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, eliminar',
       cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
+    }).then((r) => {
+      if (r.isConfirmed) {
         this.productoService.eliminarProducto(id).subscribe({
           next: () => {
-            this.toastr.success('Producto eliminado con éxito');
-            // recargar página actual (backend ya refleja el cambio)
-            this.cargarProductos();
+            this.toastr.success('Producto eliminado');
+            this.resetAndLoad();
           },
-          error: () => this.toastr.error('Error al eliminar Producto')
+          error: () => this.toastr.error('Error al eliminar')
         });
       }
-    });
-  }
-
-  // mantener los métodos actualizar/crear si los usa otra parte
-  actualizarProducto(id: string, productoActualizado: FormData): void {
-    this.productoService.actualizarProducto(id, productoActualizado).subscribe({
-      next: () => this.cargarProductos(),
-      error: (err) => console.error(err)
-    });
-  }
-
-  crearProducto(nuevoProducto: FormData): void {
-    this.productoService.crearProducto(nuevoProducto).subscribe({
-      next: () => this.cargarProductos(),
-      error: (err) => console.error(err)
     });
   }
 }

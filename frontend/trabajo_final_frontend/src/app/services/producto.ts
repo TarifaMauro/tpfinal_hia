@@ -100,22 +100,8 @@ actualizarProducto(id: string, producto: FormData): Observable<Producto> {
       );
   }
 
-  obtenerProductosPaginados(page: number, limit: number, q?: string): Observable<PaginacionRespuesta> {
-    let params = new HttpParams()
-      .set('page', String(page))
-      .set('limit', String(limit));
-    if (q) params = params.set('q', q);
+ obtenerProductosCursor(cursor: number | null, limit: number, q: string) {
+  return this.http.get<any>(`${this.API_URL}/producto/paginados?cursor=${cursor ?? ''}&limit=${limit}&q=${q}`);
+}
 
-    return this.http.get<any>(`${this.baseUrl}/producto/paginados`, { params }).pipe(
-      map(resp => {
-        const items = resp.items || resp.productos || resp.data || [];
-        const total = resp.total ?? resp.totalItems ?? resp.count ?? items.length;
-        return { items, total };
-      }),
-      catchError(err => {
-        console.error('Error obtenerProductosPaginados (frontend):', err);
-        return of({ items: [], total: 0 });
-      })
-    );
-  }
 }

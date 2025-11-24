@@ -83,12 +83,13 @@ export class LoginService {
     return null;
   }
 
-  obtenerUsuariosPaginados(page: number, pageSize: number, q: string): Observable<any> {
-    const token = this.getToken();
-    const params = `?page=${page}&pageSize=${pageSize}&q=${encodeURIComponent(q || '')}`;
-    const options = token
-      ? { headers: this.httpOption.headers.set('Authorization', `Bearer ${token}`) }
-      : { headers: this.httpOption.headers };
-    return this._http.get<any>(`${this.hostBase}paginados${params}`, options);
-  }
+ obtenerUsuariosCursor(cursor: number | null, limit: number, q: string) {
+  let params: any = { limit };
+
+  if (cursor) params.cursor = cursor;
+  if (q) params.q = q;
+
+  return this._http.get<any>(this.hostBase + 'paginados', { params });
+}
+
 }

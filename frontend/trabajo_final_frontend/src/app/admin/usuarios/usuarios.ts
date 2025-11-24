@@ -30,12 +30,11 @@ export class Usuarios implements OnInit {
   filtrado: boolean = false; //Indica si se está filtrando por username
   editandoUsuario: boolean = false; //Indica si se está editando un usuario
 
-  // Nuevas propiedades para paginación
-  page: number = 1;
-  pageSize: number = 10;
-  totalPages: number = 1;
-  totalItems: number = 0;
-  pages: number[] = [];
+cursor: number | null = null;
+limit: number = 10;
+hasNext: boolean = true;
+cargando: boolean = false;
+
   constructor(
     private router: Router,
     private loginService: LoginService,
@@ -80,32 +79,34 @@ export class Usuarios implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cargarUsuarios();
+    this.cargarUsuarios(true);
   }
 
-   cargarUsuarios(page: number = 1) {
-    this.page = page;
-    const q = (this.username || '').trim();
+   cargarUsuarios(reset: boolean = false) {
+  if (this.cargando) return;
+  this.cargando = true;
 
-    this.loginService.obtenerUsuariosPaginados(this.page, this.pageSize, q).subscribe({
-      next: (result) => {
-        // Respuesta esperada: { items: [...], total: number }
-        this.usuarios = result.items || result.data || result.docs || [];
-        this.totalItems = result.total ?? result.totalItems ?? result.count ?? this.usuarios.length;
-        this.totalPages = Math.max(1, Math.ceil(this.totalItems / this.pageSize));
-        // Si la página actual quedó fuera de rango después de la consulta, ajusta y recarga
-        if (this.page > this.totalPages) {
-          this.page = this.totalPages;
-          this.cargarUsuarios(this.page);
-          return;
-        }
-        this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-      },
-      error: (error) => {
-        this.mostrarError(error, 'Error al cargar los usuarios');
-      },
-    });
+  if (reset) {
+    this.cursor = null;
+    this.usuarios = [];
   }
+
+  const q = (this.username || '').trim();
+
+  this.loginService.obtenerUsuariosCursor(this.cursor, this.limit, q).subscribe({
+    next: (resp) => {
+      this.usuarios.push(...resp.items);
+      this.cursor = resp.nextCursor;
+      this.hasNext = resp.hasNext;
+      this.cargando = false;
+    },
+    error: (error) => {
+      this.cargando = false;
+      this.mostrarError(error, 'Error al cargar los usuarios');
+    },
+  });
+}
+
 
   mostrarDetallesUsuario(id: string, paraEditar: boolean = false) {
     this.loginService.getUserById(id).subscribe({
@@ -159,23 +160,10 @@ export class Usuarios implements OnInit {
     sessionStorage.setItem('apellido', apellido);
   }
 
-  filtrarUsuarios() {
-    const username = this.username?.trim();
-    if (!username) {
-      this.msgError = 'Debe ingresar un nombre de usuario para buscar';
-      return;
-    }
+ filtrarUsuarios() {
+  this.cargarUsuarios(true);
+}
 
-    this.msgError = '';
-    if (username === this.ultimoUsernameBuscado) {
-      this.toastr.info('Acaba de realizar la misma búsqueda');
-      return;
-    }
-
-    this.ultimoUsernameBuscado = username;
-    this.filtrado = true;
-    this.cargarUsuarios(1);
-  }
 
   eliminarUsuario(id: string, username: string) {
     const usuarioLogueado = sessionStorage.getItem('username');
@@ -215,12 +203,11 @@ export class Usuarios implements OnInit {
     });
   }
 
-  borrarFiltro() {
-    this.msgError = '';
-    this.username = '';
-    this.filtrado = false;
-    this.cargarUsuarios();
-  }
+ borrarFiltro() {
+  this.username = '';
+  this.cargarUsuarios(true);
+}
+
 
   crearUsuario() {
     this.router.navigate(['/form'], {
@@ -241,22 +228,5 @@ export class Usuarios implements OnInit {
     const errorMessage = error?.error?.msg || fallbackMessage;
     this.toastr.error(errorMessage);
   }
-   // Controles de paginación
-  goToPage(p: number) {
-    if (p < 1 || p > this.totalPages) return;
-    this.cargarUsuarios(p);
-  }
 
-  prevPage() {
-    if (this.page > 1) this.cargarUsuarios(this.page - 1);
-  }
-
-  nextPage() {
-    if (this.page < this.totalPages) this.cargarUsuarios(this.page + 1);
-  }
-
-  cambiarPageSize(size: number) {
-    this.pageSize = size;
-    this.cargarUsuarios(1);
-  }
 }

@@ -5,33 +5,53 @@ const ctrl = {};
 
 const { parseNumber, parseIntSafe, parseDateToISO } = require('./utils');
 
-ctrl.obtenerProductosPaginados = async (req, res) => {
+
+ctrl.obtenerProductosCursor = async (req, res) => {
   try {
-    const page = Math.max(1, parseInt(req.query.page) || 1);
     const limit = Math.min(100, parseInt(req.query.limit) || 25);
+    if (limit <= 0) return res.status(400).json({ msg: 'limit must be > 0' });
+
+    const cursor = req.query.cursor ? parseInt(req.query.cursor) : null; // id del último item mostrado
     const q = (req.query.q || '').trim();
 
     const where = {};
     if (q) {
+      // búsqueda usando iLike (Postgres) — los índices trigram ayudan
       where[Op.or] = [
         { nombre: { [Op.iLike]: `%${q}%` } },
         { descripcion: { [Op.iLike]: `%${q}%` } }
       ];
     }
 
-    const result = await Product.findAndCountAll({
+    if (cursor) {
+      // id < cursor para paginar hacia atrás (más antiguo)
+      where.id = { [Op.lt]: cursor };
+    }
+
+    const items = await Product.findAll({
       where,
-      limit,
-      offset: (page - 1) * limit,
-      order: [['createdAt', 'DESC']],
+      limit: limit + 1, // traer uno de más para saber si hay next
+      order: [['id', 'DESC']], // o createdAt si preferís
+      attributes: ['id', 'nombre', 'descripcion', 'precio', 'createdAt'] // solo lo necesario
     });
 
-    return res.json({ items: result.rows, total: result.count });
+    const hasNext = items.length > limit;
+    if (hasNext) items.pop(); // sacamos el extra
+
+    const nextCursor = items.length ? items[items.length - 1].id : null;
+
+    return res.json({
+      items,
+      nextCursor,
+      hasNext,
+      limit
+    });
   } catch (err) {
-    console.error('Error obtenerProductosPaginados:', err);
+    console.error('Error obtenerProductosCursor:', err);
     return res.status(500).json({ msg: 'Error al obtener productos', error: err.message });
   }
 };
+
 ctrl.createProducto = async (req, res) => {
   try {
     const { nombre, descripcion, color, categoria } = req.body;

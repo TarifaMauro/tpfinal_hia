@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, map, catchError, of, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 export interface Producto {
@@ -107,14 +108,12 @@ actualizarProducto(id: string, producto: FormData): Observable<Producto> {
 
     return this.http.get<any>(`${this.baseUrl}/producto/paginados`, { params }).pipe(
       map(resp => {
-        // Normalizar distintas formas de respuesta del backend
-        const items: Producto[] = resp.items || resp.productos || resp.docs || resp.data || [];
-        const total: number = resp.total ?? resp.totalItems ?? resp.count ?? resp.totalDocs ?? (Array.isArray(resp) ? resp.length : items.length);
-        return { items, total } as PaginacionRespuesta;
+        const items = resp.items || resp.productos || resp.data || [];
+        const total = resp.total ?? resp.totalItems ?? resp.count ?? items.length;
+        return { items, total };
       }),
       catchError(err => {
-        console.error('Error paginando productos:', err);
-        // devolver estructura vacía para que el componente la maneje
+        console.error('Error obtenerProductosPaginados (frontend):', err);
         return of({ items: [], total: 0 });
       })
     );

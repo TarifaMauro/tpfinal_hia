@@ -1,4 +1,5 @@
-const { Product, ProductImage, ProductSize, Category } = require('../models_sql');
+const { Product } = require('../models_sql');
+const { Op } = require('sequelize');
 
 const ctrl = {};
 
@@ -7,29 +8,25 @@ const { parseNumber, parseIntSafe, parseDateToISO } = require('./utils');
 ctrl.obtenerProductosPaginados = async (req, res) => {
   try {
     const page = Math.max(1, parseInt(req.query.page) || 1);
-    const pageSize = Math.min(100, parseInt(req.query.pageSize) || 25);
+    const limit = Math.min(100, parseInt(req.query.limit) || 25);
     const q = (req.query.q || '').trim();
 
     const where = {};
     if (q) {
-      // ajustar campo según tu modelo (p. ej. name, title, description)
-      where.name = { [Op.iLike]: `%${q}%` };
+      where[Op.or] = [
+        { nombre: { [Op.iLike]: `%${q}%` } },
+        { descripcion: { [Op.iLike]: `%${q}%` } }
+      ];
     }
 
-    const result = await db.Product.findAndCountAll({
+    const result = await Product.findAndCountAll({
       where,
-      limit: pageSize,
-      offset: (page - 1) * pageSize,
+      limit,
+      offset: (page - 1) * limit,
       order: [['createdAt', 'DESC']],
-      attributes: ['id', 'name', 'price', 'stock', 'createdAt'], // limitar attrs
-      // incluir solo lo necesario (p. ej. category.name si se necesita)
-      // include: [{ model: db.Category, attributes: ['id','name'] }]
     });
 
-    return res.json({
-      items: result.rows,
-      total: result.count
-    });
+    return res.json({ items: result.rows, total: result.count });
   } catch (err) {
     console.error('Error obtenerProductosPaginados:', err);
     return res.status(500).json({ msg: 'Error al obtener productos', error: err.message });

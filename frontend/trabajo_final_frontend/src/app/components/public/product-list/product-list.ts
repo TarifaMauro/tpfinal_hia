@@ -33,6 +33,10 @@ export class ProductList implements OnInit {
   currentPage = 1;
   hoveredIndex: number | null = null;
   totalProducts: number = 0;
+  totalPages: number = 0;
+  pages: number[] = [];
+  pageSize: number = 24;
+  maxPagesToShow = 7;
   searchTerm: string = '';
 
   constructor(
@@ -70,54 +74,71 @@ export class ProductList implements OnInit {
     this.searchTerm = '';
   }
 
-  loadProducts() {
+  loadProducts(page: number = 1) {
+    this.currentPage = Math.max(1, page);
+    const q = (this.searchTerm || '').trim();
+
+    // Si se seleccionó categoría, mantenemos la llamada por categoría (no paginada)
     if (this.selectedCategory) {
       this.productoService.obtenerProductosPorCategoria(this.selectedCategory).subscribe(
         (productos) => {
-          if (productos && productos.length > 0) {
-            this.allProducts = productos;
-            this.products = [...productos];
-          } else {
-            // Si la categoría no existe o no tiene productos, mostrar toda la tienda
-            this.productoService.obtenerProductos().subscribe(
-              (all) => {
-                this.allProducts = all;
-                this.products = [...all];
-              }
-            );
-          }
+          this.allProducts = productos || [];
+          this.products = [...this.allProducts];
           this.totalProducts = this.products.length;
+          this.totalPages = Math.max(1, Math.ceil(this.totalProducts / this.pageSize));
+          this.generatePagesArray();
           this.colors = this.getAllColors();
           this.categories = this.getAllCategories();
           this.priceRange.max = Math.max(...this.products.map(p => p.precio), 0);
         },
-        (error) => {
-          // En caso de error, también mostrar toda la tienda
-          this.productoService.obtenerProductos().subscribe(
-            (all) => {
-              this.allProducts = all;
-              this.products = [...all];
-              this.totalProducts = this.products.length;
-              this.colors = this.getAllColors();
-              this.categories = this.getAllCategories();
-              this.priceRange.max = Math.max(...all.map(p => p.precio), 0);
-            }
-          );
+        (err) => {
+          // fallback a cargar todos los productos paginados si falla
+          this.loadPagedFallback();
         }
       );
-    } else {
-      // Cargar todos los productos
-      this.productoService.obtenerProductos().subscribe(
-        (productos) => {
-          this.allProducts = productos;
-          this.products = [...productos];
-          this.totalProducts = this.products.length;
-          this.colors = this.getAllColors();
-          this.categories = this.getAllCategories();
-          this.priceRange.max = Math.max(...productos.map(p => p.precio), 0);
-        }
-      );
+      return;
     }
+
+    // Paginado server-side (mejor para base de datos)
+    this.productoService.obtenerProductosPaginados(this.currentPage, this.pageSize, q).subscribe({
+      next: (resp) => {
+        const items = resp?.items || [];
+        const total = resp?.total ?? items.length;
+        this.allProducts = items;
+        this.products = [...items];
+        this.totalProducts = total;
+        this.totalPages = Math.max(1, Math.ceil(this.totalProducts / this.pageSize));
+        if (this.currentPage > this.totalPages) {
+          this.currentPage = this.totalPages;
+          // recargar si quedó fuera de rango
+          this.loadProducts(this.currentPage);
+          return;
+        }
+        this.generatePagesArray();
+        this.colors = this.getAllColors();
+        this.categories = this.getAllCategories();
+        this.priceRange.max = Math.max(...this.products.map(p => p.precio), 0);
+      },
+      error: () => {
+        // fallback: intentar cargar todos los productos localmente
+        this.loadPagedFallback();
+      }
+    });
+  }
+
+  private loadPagedFallback() {
+    this.productoService.obtenerProductos().subscribe(
+      (productos) => {
+        this.allProducts = productos || [];
+        this.products = [...this.allProducts];
+        this.totalProducts = this.products.length;
+        this.totalPages = Math.max(1, Math.ceil(this.totalProducts / this.pageSize));
+        this.generatePagesArray();
+        this.colors = this.getAllColors();
+        this.categories = this.getAllCategories();
+        this.priceRange.max = Math.max(...this.products.map(p => p.precio), 0);
+      }
+    );
   }
 
   onSortChange(event: any) {
@@ -156,55 +177,35 @@ export class ProductList implements OnInit {
     return Array.from(categorySet);
   }
 
+  onFilterChange() {
+    // Usar paginado server-side al filtrar (reiniciar a página 1)
+    this.loadProducts(1);
+  }
+
   onPageChange(page: number): void {
-    this.currentPage = page;
-    // Lógica para cambiar la página
+    if (page < 1) page = 1;
+    if (page > this.totalPages) page = this.totalPages;
+    if (page === this.currentPage) return;
+    this.loadProducts(page);
+  }
+
+  private generatePagesArray() {
+    const total = this.totalPages;
+    const current = this.currentPage;
+    const max = this.maxPagesToShow;
+    let start = Math.max(1, current - Math.floor(max / 2));
+    let end = start + max - 1;
+    if (end > total) {
+      end = total;
+      start = Math.max(1, end - max + 1);
+    }
+    this.pages = [];
+    for (let p = start; p <= end; p++) this.pages.push(p);
   }
 
   openFilterModal() {
     const modal = new bootstrap.Modal(document.getElementById('filterModal')!);
     modal.show();
-  }
-
-  onFilterChange() {
-    let filtered = [...this.allProducts];
-
-    // Filtrar por término de búsqueda
-    if (this.searchTerm && this.searchTerm.trim() !== '') {
-      const term = this.searchTerm.trim().toLowerCase();
-      filtered = filtered.filter(p =>
-        p.nombre.toLowerCase().includes(term) ||
-        p.descripcion.toLowerCase().includes(term)
-      );
-    }
-
-    // Filtrar por color
-    const activeColors = Object.keys(this.selectedColors).filter(c => this.selectedColors[c]);
-    if (activeColors.length) {
-      filtered = filtered.filter(p => activeColors.includes(p.color));
-    }
-
-    // Filtrar por precio
-    if (this.priceRange.min) {
-      filtered = filtered.filter(p => p.precio >= this.priceRange.min);
-    }
-    if (this.priceRange.max) {
-      filtered = filtered.filter(p => p.precio <= this.priceRange.max);
-    }
-
-    // Filtrar por categoría (ya no es necesario si venimos de una ruta con categoría)
-    if (this.selectedCategory && !this.route.snapshot.params['categoryName']) {
-      filtered = filtered.filter(p => {
-        if (p.categoria && typeof p.categoria === 'object') {
-          return (p.categoria as Categoria).nombre === this.selectedCategory;
-        }
-        return false;
-      });
-    }
-
-    this.products = filtered;
-    this.totalProducts = filtered.length;
-    this.currentPage = 1;
   }
 
   goToProductDetail(productId: string): void {

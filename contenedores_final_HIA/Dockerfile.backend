@@ -8,7 +8,7 @@ RUN apk add --no-cache git netcat-openbsd postgresql-client
 WORKDIR /usr/src/app
 
 # Clonar el repositorio de la aplicación
-RUN git clone --branch frontend https://github.com/ignaMartin22/tpfinal_hia.git .
+RUN git clone --branch Frontend https://github.com/ignaMartin22/tpfinal_hia.git .
 
 # Cambiar al directorio del backend
 # Cuando se clona el repo en '.', el backend queda en '/usr/src/app/backend'

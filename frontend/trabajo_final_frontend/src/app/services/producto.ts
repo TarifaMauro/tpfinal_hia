@@ -38,7 +38,8 @@ export interface PaginacionRespuesta {
 })
 export class ProductoService {
   private API_URL = environment.apiUrl;
-  private baseUrl = '/api'; // ajustar según tu configuración
+  // usar siempre la URL del environment para evitar rutas relativas incorrectas
+  private baseUrl = this.API_URL;
   valorBusqueda = '';
 
   constructor(private http: HttpClient) { }
@@ -104,6 +105,18 @@ actualizarProducto(id: string, producto: FormData): Observable<Producto> {
       .set('limit', String(limit));
     if (q) params = params.set('q', q);
 
-    return this.http.get<PaginacionRespuesta>(`${this.baseUrl}/producto/paginados`, { params });
+    return this.http.get<any>(`${this.baseUrl}/producto/paginados`, { params }).pipe(
+      map(resp => {
+        // Normalizar distintas formas de respuesta del backend
+        const items: Producto[] = resp.items || resp.productos || resp.docs || resp.data || [];
+        const total: number = resp.total ?? resp.totalItems ?? resp.count ?? resp.totalDocs ?? (Array.isArray(resp) ? resp.length : items.length);
+        return { items, total } as PaginacionRespuesta;
+      }),
+      catchError(err => {
+        console.error('Error paginando productos:', err);
+        // devolver estructura vacía para que el componente la maneje
+        return of({ items: [], total: 0 });
+      })
+    );
   }
 }

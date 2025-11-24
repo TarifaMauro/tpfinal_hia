@@ -6,34 +6,33 @@ const { parseNumber, parseIntSafe, parseDateToISO } = require('./utils');
 
 ctrl.obtenerProductosPaginados = async (req, res) => {
   try {
-    const page = Math.max(1, parseInt(req.query.page, 10) || 1);
-    const pageSize = Math.max(1, parseInt(req.query.pageSize, 10) || 25);
-    const q = (req.query.q || '').toString().trim();
+    const page = Math.max(1, parseInt(req.query.page) || 1);
+    const pageSize = Math.min(100, parseInt(req.query.pageSize) || 25);
+    const q = (req.query.q || '').trim();
 
-    const where = q ? {
-      [Op.or]: [
-        { nombre: { [Op.iLike]: `%${q}%` } },
-        { descripcion: { [Op.iLike]: `%${q}%` } }
-      ]
-    } : {};
+    const where = {};
+    if (q) {
+      // ajustar campo según tu modelo (p. ej. name, title, description)
+      where.name = { [Op.iLike]: `%${q}%` };
+    }
 
-    const offset = (page - 1) * pageSize;
-
-    // findAndCountAll devuelve { rows, count }
-    const result = await Product.findAndCountAll({
+    const result = await db.Product.findAndCountAll({
       where,
       limit: pageSize,
-      offset,
-      order: [['createdAt', 'DESC']]
+      offset: (page - 1) * pageSize,
+      order: [['createdAt', 'DESC']],
+      attributes: ['id', 'name', 'price', 'stock', 'createdAt'], // limitar attrs
+      // incluir solo lo necesario (p. ej. category.name si se necesita)
+      // include: [{ model: db.Category, attributes: ['id','name'] }]
     });
 
-    res.json({
+    return res.json({
       items: result.rows,
       total: result.count
     });
   } catch (err) {
     console.error('Error obtenerProductosPaginados:', err);
-    res.status(500).json({ msg: 'Error interno al obtener productos' });
+    return res.status(500).json({ msg: 'Error al obtener productos', error: err.message });
   }
 };
 ctrl.createProducto = async (req, res) => {

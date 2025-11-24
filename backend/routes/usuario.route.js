@@ -163,6 +163,19 @@ router.get(
 	authCtrl.verifyToken,
 	usuarioCtrl.getUsuarios
 );
+router.get(
+	'/paginados',
+	/*
+		#swagger.path = '/api/usuario/'
+		#swagger.tags = ['Usuarios']
+		#swagger.summary = 'Retorno de todos los usuarios'
+		#swagger.description = 'Obtiene la lista de todos los usuarios'
+		#swagger.security = [{ "bearerAuth": [] }]
+		#swagger.responses[200] = { description: 'Usuarios obtenidos correctamente' }
+	*/
+	authCtrl.verifyToken,
+	usuarioCtrl.obtenerUsuariosPaginados
+);
 
 router.get(
 	'/:id',

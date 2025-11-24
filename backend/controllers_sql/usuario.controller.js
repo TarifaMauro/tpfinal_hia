@@ -8,7 +8,34 @@ const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
 const googleClient = new OAuth2Client(GOOGLE_CLIENT_ID);
 
 const ctrl = {};
+ctrl.obtenerUsuariosPaginados = async (req, res) => {
+  try {
+    const page = Math.max(1, parseInt(req.query.page) || 1);
+    const pageSize = Math.min(100, parseInt(req.query.pageSize) || 25);
+    const q = (req.query.q || '').trim();
 
+    const where = {};
+    if (q) {
+      where[Op.or] = [
+        { name: { [Op.iLike]: `%${q}%` } },
+        { email: { [Op.iLike]: `%${q}%` } }
+      ];
+    }
+
+    const result = await db.User.findAndCountAll({
+      where,
+      limit: pageSize,
+      offset: (page - 1) * pageSize,
+      order: [['createdAt', 'DESC']],
+      attributes: ['id', 'name', 'email', 'createdAt']
+    });
+
+    return res.json({ items: result.rows, total: result.count });
+  } catch (err) {
+    console.error('Error obtenerUsuariosPaginados:', err);
+    return res.status(500).json({ msg: 'Error al obtener usuarios', error: err.message });
+  }
+};
 ctrl.createUsuario = async (req, res) => {
   try {
     const camposSanitizados = {

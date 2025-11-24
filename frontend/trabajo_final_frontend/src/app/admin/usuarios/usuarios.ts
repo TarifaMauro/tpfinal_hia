@@ -30,6 +30,12 @@ export class Usuarios implements OnInit {
   filtrado: boolean = false; //Indica si se está filtrando por username
   editandoUsuario: boolean = false; //Indica si se está editando un usuario
 
+  // Nuevas propiedades para paginación
+  page: number = 1;
+  pageSize: number = 10;
+  totalPages: number = 1;
+  totalItems: number = 0;
+  pages: number[] = [];
   constructor(
     private router: Router,
     private loginService: LoginService,
@@ -38,6 +44,8 @@ export class Usuarios implements OnInit {
   ) {
     this.formUsuario = this.fb.group(this.obtenerControlesFormulario());
   }
+
+  
 
   private obtenerControlesFormulario() {
     return {
@@ -75,10 +83,21 @@ export class Usuarios implements OnInit {
     this.cargarUsuarios();
   }
 
-  cargarUsuarios() {
-    this.loginService.getUsers().subscribe({
+   cargarUsuarios(page: number = 1) {
+    this.page = page;
+    const q = (this.username || '').trim();
+
+    this.loginService.obtenerUsuariosPaginados(this.page, this.pageSize, q).subscribe({
       next: (result) => {
-        this.usuarios = result.data;
+        // Soportar varias formas de respuesta: result.data, result.docs, o result (array)
+        this.usuarios = result.data || result.docs || result || [];
+
+        // Intentar extraer totalPages/totalItems si el backend los devuelve
+        this.totalPages = result.totalPages || Math.ceil((result.totalItems || this.usuarios.length) / this.pageSize) || 1;
+        this.totalItems = result.totalItems || result.count || this.usuarios.length;
+
+        // Construir array de páginas para el template
+        this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
       },
       error: (error) => {
         this.mostrarError(error, 'Error al cargar los usuarios');
@@ -145,7 +164,6 @@ export class Usuarios implements OnInit {
       return;
     }
 
-    //Evitar llamadas si el filtro no cambió
     this.msgError = '';
     if (username === this.ultimoUsernameBuscado) {
       this.toastr.info('Acaba de realizar la misma búsqueda');
@@ -153,22 +171,8 @@ export class Usuarios implements OnInit {
     }
 
     this.ultimoUsernameBuscado = username;
-
-    this.loginService.getUsersByUsername(username).subscribe({
-      next: (result) => {
-        if (result.data.length === 0) {
-          this.toastr.info('No se encontraron usuarios con ese nombre');
-          return;
-        }
-
-        this.usuarios = result.data;
-        this.filtrado = true;
-        this.toastr.success('Usuarios encontrados: ' + this.usuarios.length);
-      },
-      error: (error) => {
-        this.mostrarError(error);
-      },
-    });
+    this.filtrado = true;
+    this.cargarUsuarios(1);
   }
 
   eliminarUsuario(id: string, username: string) {
@@ -234,5 +238,23 @@ export class Usuarios implements OnInit {
   ) {
     const errorMessage = error?.error?.msg || fallbackMessage;
     this.toastr.error(errorMessage);
+  }
+   // Controles de paginación
+  goToPage(p: number) {
+    if (p < 1 || p > this.totalPages) return;
+    this.cargarUsuarios(p);
+  }
+
+  prevPage() {
+    if (this.page > 1) this.cargarUsuarios(this.page - 1);
+  }
+
+  nextPage() {
+    if (this.page < this.totalPages) this.cargarUsuarios(this.page + 1);
+  }
+
+  cambiarPageSize(size: number) {
+    this.pageSize = size;
+    this.cargarUsuarios(1);
   }
 }

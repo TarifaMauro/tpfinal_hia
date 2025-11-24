@@ -8,7 +8,7 @@ RUN apk add --no-cache git netcat-openbsd postgresql-client
 WORKDIR /usr/src/app
 
 # Clonar el repositorio de la aplicación
-RUN git clone https://github.com/ignaMartin22/tpfinal_hia.git .
+RUN git clone --branch frontend https://github.com/ignaMartin22/tpfinal_hia.git .
 
 # Cambiar al directorio del backend
 # Cuando se clona el repo en '.', el backend queda en '/usr/src/app/backend'
@@ -19,7 +19,8 @@ RUN npm install
 
 # Copiar entrypoint que espera a la DB antes de iniciar la app
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN sed -i 's/\r$//' /usr/local/bin/entrypoint.sh && \
+    chmod +x /usr/local/bin/entrypoint.sh
 
 # Exponer el puerto en el que la aplicación se ejecutará
 EXPOSE 3000

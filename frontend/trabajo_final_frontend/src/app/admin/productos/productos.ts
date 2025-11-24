@@ -57,7 +57,12 @@ export class Productos implements OnInit, OnDestroy {
         this.productos = resp.items || [];
         this.totalItems = resp.total ?? 0;
         this.totalPages = Math.max(1, Math.ceil(this.totalItems / this.pageSize));
-        if (this.page > this.totalPages) this.page = this.totalPages;
+        if (this.page > this.totalPages) {
+          this.page = this.totalPages;
+          // recargar correctamente la página corregida
+          this.cargarProductos();
+          return;
+        }
         this.generarPaginasArray();
       },
       error: () => {

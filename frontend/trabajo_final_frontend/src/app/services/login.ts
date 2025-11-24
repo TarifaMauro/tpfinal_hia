@@ -82,4 +82,8 @@ export class LoginService {
 
     return null;
   }
+
+  obtenerUsuariosPaginados(page: number, pageSize: number, q: string): Observable<any> {
+      return this._http.get(`${this.hostBase}paginados?page=${page}&pageSize=${pageSize}&q=${q}`);
+  }
 }

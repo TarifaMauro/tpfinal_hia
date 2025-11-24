@@ -1,8 +1,8 @@
 # base image
 FROM node:lts-alpine3.22
 
-# Instalar git y netcat (usado por el entrypoint para esperar la DB)
-RUN apk add --no-cache git netcat-openbsd postgresql-client
+# Instalar git, netcat, postgresql-client y Python (para el script de carga masiva)
+RUN apk add --no-cache git netcat-openbsd postgresql-client python3 py3-pip
 
 # Establecer el directorio de trabajo
 WORKDIR /usr/src/app
@@ -17,9 +17,17 @@ WORKDIR /usr/src/app/backend
 # Instalar dependencias de la aplicación
 RUN npm install
 
+# Instalar dependencias de Python para el script de carga masiva
+# Usar --break-system-packages porque estamos en un contenedor Docker aislado
+RUN pip3 install --no-cache-dir --break-system-packages psycopg2-binary faker bcrypt
+
+# Copiar el script de carga masiva
+COPY scripts/carga_masiva.py /usr/src/app/backend/carga_masiva.py
+
 # Copiar entrypoint que espera a la DB antes de iniciar la app
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
+# Convertir terminaciones de línea CRLF a LF (necesario en Windows)
+RUN sed -i 's/\r$//' /usr/local/bin/entrypoint.sh && chmod +x /usr/local/bin/entrypoint.sh
 
 # Exponer el puerto en el que la aplicación se ejecutará
 EXPOSE 3000

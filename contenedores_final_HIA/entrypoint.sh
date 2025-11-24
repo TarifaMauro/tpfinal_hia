@@ -33,5 +33,24 @@ else
   done
 fi
 
-echo "DB reachable, starting app"
-exec node index.js
+echo "DB reachable"
+
+# Iniciar el servidor Node.js en background para que cree las tablas
+echo "Starting app (creando tablas si no existen)..."
+cd /usr/src/app/backend
+node index.js &
+NODE_PID=$!
+
+# Esperar a que Node.js cree las tablas antes de ejecutar el script de carga masiva
+echo "Esperando a que el backend cree las tablas..."
+sleep 10
+
+# Ejecutar script de carga masiva si no hay registros (solo una vez)
+if [ -f /usr/src/app/backend/carga_masiva.py ]; then
+    echo "Verificando si es necesario ejecutar carga masiva..."
+    # Usar PYTHONUNBUFFERED=1 y python3 -u para mostrar prints en tiempo real
+    PYTHONUNBUFFERED=1 python3 -u /usr/src/app/backend/carga_masiva.py || echo "Advertencia: El script de carga masiva no se ejecutó o ya existen datos"
+fi
+
+# Esperar al proceso de Node.js (mantener el contenedor corriendo)
+wait $NODE_PID

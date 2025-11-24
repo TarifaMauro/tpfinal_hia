@@ -252,9 +252,9 @@ services:
     container_name: backend-container
     ports:
       - "3001:3001"
-    # Use a named volume for backend so the image content is preserved
+    # Use a named volume for uploads directory to persist uploaded files
     volumes:
-      - backend_data:/usr/src/app/backend
+      - backend_data:/usr/src/app/backend/uploads
 
     depends_on:
         - haproxy  

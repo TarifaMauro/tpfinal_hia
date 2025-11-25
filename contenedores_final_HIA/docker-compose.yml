@@ -282,6 +282,41 @@ services:
     depends_on:
        - backend
 
+  # NEXTCLOUD - Base de Datos
+  nextcloud-db:
+    image: mariadb:10.6
+    container_name: nextcloud_db
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - nextcloud_db_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin123
+      - MYSQL_PASSWORD=admin123
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+    networks:
+      - postgres-cluster
+
+  # NEXTCLOUD - Aplicación
+  nextcloud-app:
+    image: nextcloud
+    container_name: nextcloud_app
+    restart: always
+    ports:
+      - "8081:80"  # Se usa 8081 para no chocar con pgadmin (8080)
+    depends_on:
+      - nextcloud-db
+    environment:
+      - MYSQL_PASSWORD=admin123
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=nextcloud-db
+    volumes:
+      - nextcloud_data:/var/www/html
+    networks:
+      - postgres-cluster
+
 volumes:
   etcd1_data:
   etcd2_data:
@@ -293,6 +328,8 @@ volumes:
   grafana_data:
   pgadmin_data:
   backend_data:
+  nextcloud_db_data:
+  nextcloud_data:
 
 networks:
   postgres-cluster:

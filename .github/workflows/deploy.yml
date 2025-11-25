@@ -12,16 +12,23 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v3
 
-      # --- CORRECCIÓN CRÍTICA: MOVER ARCHIVOS ---
-      # Copiamos el entrypoint.sh desde la carpeta de contenedores hacia 
-      # las carpetas de código para que Docker pueda encontrarlos al construir.
-      - name: Mover Entrypoint y Configs
+      # --- PASO DE PREPARACIÓN ROBUSTO ---
+      # Copiamos TODO lo que pueda necesitar el Dockerfile:
+      # 1. entrypoint.sh
+      # 2. Carpeta scripts completa (con carga_masiva.py y demás)
+      # 3. Carpeta config completa (por si acaso usa algo de ahí)
+      - name: Preparar Archivos de Soporte
         run: |
-          echo "Copiando entrypoint al backend..."
+          echo "--- Preparando Backend ---"
           cp contenedores_final_HIA/entrypoint.sh backend/
+          cp -r contenedores_final_HIA/scripts backend/
+          cp -r contenedores_final_HIA/config backend/
           
-          # Si el frontend también usa entrypoint, descomenta la linea de abajo:
-          # cp contenedores_final_HIA/entrypoint.sh frontend/
+          echo "--- Preparando Frontend ---"
+          # Hacemos lo mismo para el frontend por seguridad
+          cp contenedores_final_HIA/entrypoint.sh frontend/ || true
+          # El || true evita que falle si el frontend no necesita scripts, pero intenta copiarlos
+          cp -r contenedores_final_HIA/scripts frontend/ || true
 
       - name: Login en Docker Hub
         uses: docker/login-action@v2

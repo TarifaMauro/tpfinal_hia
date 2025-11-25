@@ -1,0 +1,97 @@
+{
+  "timestamp": "20251124T184930Z",
+  "best": {
+    "shared_buffers": "512MB",
+    "work_mem": "4MB",
+    "max_connections": 89,
+    "tps": 289.540769
+  },
+  "all": [
+    {
+      "params": [
+        "512MB",
+        "4MB",
+        89
+      ],
+      "tps": 289.540769,
+      "leader": "postgres-master",
+      "lag_ok": true,
+      "lag_details": {
+        "postgres-replica2": {
+          "lag_seconds": 1.053477
+        },
+        "postgres-replica1": {
+          "lag_seconds": 1.414668
+        }
+      },
+      "rollback": false,
+      "rollback_reason": null,
+      "backup_path": null
+    },
+    {
+      "params": [
+        "256MB",
+        "8MB",
+        55
+      ],
+      "tps": 190.307183,
+      "leader": "postgres-master",
+      "lag_ok": true,
+      "lag_details": {
+        "postgres-replica2": {
+          "lag_seconds": 0.608883
+        },
+        "postgres-replica1": {
+          "lag_seconds": 0.882545
+        }
+      },
+      "rollback": false,
+      "rollback_reason": null,
+      "backup_path": null
+    },
+    {
+      "params": [
+        "256MB",
+        "8MB",
+        57
+      ],
+      "tps": 150.316744,
+      "leader": "postgres-master",
+      "lag_ok": true,
+      "lag_details": {
+        "postgres-replica2": {
+          "lag_seconds": 0.451965
+        },
+        "postgres-replica1": {
+          "lag_seconds": 0.627537
+        }
+      },
+      "rollback": false,
+      "rollback_reason": null,
+      "backup_path": null
+    },
+    {
+      "params": [
+        "256MB",
+        "4MB",
+        86
+      ],
+      "tps": 133.071531,
+      "leader": "postgres-master",
+      "lag_ok": true,
+      "lag_details": {
+        "postgres-replica2": {
+          "lag_seconds": 0.692615
+        },
+        "postgres-replica1": {
+          "lag_seconds": 0.918657
+        }
+      },
+      "rollback": false,
+      "rollback_reason": null,
+      "backup_path": null
+    }
+  ],
+  "baseline_tps": 267.995236,
+  "last_backup_path": null
+}

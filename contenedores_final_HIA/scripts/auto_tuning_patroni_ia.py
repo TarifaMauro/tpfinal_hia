@@ -7,6 +7,8 @@ import sys
 import argparse
 import json
 import datetime
+from datetime import timezone
+import numpy as np
 import os
 
 # Logging a archivo y consola
@@ -296,7 +298,7 @@ def run_pgbench_init(mode='local', client_container=None, haproxy_host='haproxy'
 def backup_container_patroni_yml(container_name):
     """Copia el patroni.yml del contenedor al host (cwd) y devuelve la ruta local."""
     path = detect_patroni_yml_path(container_name)
-    ts = datetime.datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')
+    ts = datetime.datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     outname = f"patroni_backup_{container_name}_{ts}.yml"
     cmd = ["docker", "exec", container_name, "cat", path]
     res = subprocess.run(cmd, capture_output=True, text=True)
@@ -476,6 +478,38 @@ def run_pgbench(clients=10, duration=30, retries=5, retry_wait=8,
     print("[ERROR] pgbench falló tras varios intentos. Se devuelve TPS=0.")
     return 0
 
+
+def _convert_for_json(obj):
+    """Recursively convert common non-JSON types to native Python types.
+    - numpy scalars/arrays -> native int/float/list
+    - datetime -> ISO string
+    """
+    # dict
+    if isinstance(obj, dict):
+        return { _convert_for_json(k): _convert_for_json(v) for k, v in obj.items() }
+    # list/tuple
+    if isinstance(obj, list):
+        return [ _convert_for_json(v) for v in obj ]
+    if isinstance(obj, tuple):
+        return tuple(_convert_for_json(v) for v in obj)
+    # numpy scalar
+    if isinstance(obj, np.generic):
+        try:
+            return obj.item()
+        except Exception:
+            return int(obj)
+    # numpy array
+    if isinstance(obj, np.ndarray):
+        return obj.tolist()
+    # datetime
+    if isinstance(obj, datetime.datetime):
+        try:
+            return obj.astimezone(timezone.utc).isoformat()
+        except Exception:
+            return obj.isoformat()
+    # fallback: basic types (str,int,float,bool,None) will pass through
+    return obj
+
 def objective(params):
     shared_buffers, work_mem, max_connections = params
     print(f"\nProbando: shared_buffers={shared_buffers}, work_mem={work_mem}, max_connections={max_connections}")
@@ -614,7 +648,7 @@ def main():
     n_random_starts = min(5, max(0, args.n_calls))
     res = gp_minimize(objective, space, n_calls=args.n_calls, n_random_starts=n_random_starts, random_state=42)
 
-    timestamp = datetime.datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')
+    timestamp = datetime.datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     out = {
         'timestamp': timestamp,
         'best': {
@@ -643,8 +677,14 @@ def main():
         out_path = f"results_autotune_{timestamp}.json"
     else:
         out_path = "results_autotune.json"
-    with open(out_path, 'w', encoding='utf-8') as fh:
-        json.dump(out, fh, indent=2, ensure_ascii=False)
+    try:
+        safe_out = _convert_for_json(out)
+        with open(out_path, 'w', encoding='utf-8') as fh:
+            json.dump(safe_out, fh, indent=2, ensure_ascii=False)
+    except TypeError:
+        # Fallback: coerce unknown objects to str
+        with open(out_path, 'w', encoding='utf-8') as fh:
+            json.dump(out, fh, indent=2, ensure_ascii=False, default=str)
 
     # Additionally write a human-readable summary text file including key logs
     if GLOBAL_USE_TIMESTAMP:
@@ -664,7 +704,8 @@ def main():
             sf.write("All evaluated configurations (params -> TPS):\n")
             try:
                 for row in out['all']:
-                    sf.write(f"  {row['params']} -> {row['score']}\n")
+                    score = row.get('tps', row.get('score'))
+                    sf.write(f"  {row.get('params')} -> {score}\n")
             except Exception:
                 sf.write("  (no detailed iteration data available)\n")
             sf.write('\n')

@@ -3,48 +3,60 @@
 === OPTIMIZACIÓN INTELIGENTE DE PARÁMETROS CON IA (PATRONI) ===
 
 Modo: container | dry-run: True | commit: False | n_calls: 4
-[INFO] Encontrado contenedor con pgbench: postgres-replica2
-[INFO] Usando contenedor detectado para pgbench: postgres-replica2
+[INFO] Encontrado contenedor con pgbench: postgres-replica1
+[INFO] Usando contenedor detectado para pgbench: postgres-replica1
 [INFO] Midiendo baseline (TPS actual) antes de cambios...
-[INFO] pgbench exitoso en intento 1. TPS: 267.995236
-[INFO] Baseline TPS: 267.995236
+[WARN] pgbench falló o TPS=0 en intento 1. Mensaje de inicialización detectado.
+[DEBUG] Salida completa de pgbench:
+pgbench (18.1 (Debian 18.1-1.pgdg13+2), server 15.15 (Debian 15.15-1.pgdg13+1))
+pgbench: error: could not count number of branches: ERROR:  relation "pgbench_branches" does not exist
+LINE 1: select count(*) from pgbench_branches
+                             ^
+pgbench: hint: Perhaps you need to do initialization ("pgbench -i") in database "postgres".
+
+[INFO] --auto-init activado: intentando inicializar la base con pgbench -i
+[INFO] Intentando inicializar la base de datos para pgbench (mode=container)...
+[OK] Inicialización pgbench completada.
+[INFO] Inicialización completada, reintentando pgbench de inmediato...
+[INFO] pgbench exitoso en intento 2. TPS: 173.77102
+[INFO] Baseline TPS: 173.77102
 
 Probando: shared_buffers=512MB, work_mem=4MB, max_connections=89
 [INFO] Nodo líder detectado via patronictl: postgres-master
 [DRY-RUN] Se habría actualizado el YAML con:
     shared_buffers=512MB, work_mem=4MB, max_connections=89
 [INFO] No se reiniciará el contenedor en modo dry-run.
-[INFO] pgbench exitoso en intento 1. TPS: 289.540769
-TPS obtenido: 289.540769
+[INFO] pgbench exitoso en intento 1. TPS: 197.837434
+TPS obtenido: 197.837434
 
 Probando: shared_buffers=256MB, work_mem=8MB, max_connections=55
 [INFO] Nodo líder detectado via patronictl: postgres-master
 [DRY-RUN] Se habría actualizado el YAML con:
     shared_buffers=256MB, work_mem=8MB, max_connections=55
 [INFO] No se reiniciará el contenedor en modo dry-run.
-[INFO] pgbench exitoso en intento 1. TPS: 190.307183
-TPS obtenido: 190.307183
+[INFO] pgbench exitoso en intento 1. TPS: 126.198611
+TPS obtenido: 126.198611
 
 Probando: shared_buffers=256MB, work_mem=8MB, max_connections=57
 [INFO] Nodo líder detectado via patronictl: postgres-master
 [DRY-RUN] Se habría actualizado el YAML con:
     shared_buffers=256MB, work_mem=8MB, max_connections=57
 [INFO] No se reiniciará el contenedor en modo dry-run.
-[INFO] pgbench exitoso en intento 1. TPS: 150.316744
-TPS obtenido: 150.316744
+[INFO] pgbench exitoso en intento 1. TPS: 177.824311
+TPS obtenido: 177.824311
 
 Probando: shared_buffers=256MB, work_mem=4MB, max_connections=86
 [INFO] Nodo líder detectado via patronictl: postgres-master
 [DRY-RUN] Se habría actualizado el YAML con:
     shared_buffers=256MB, work_mem=4MB, max_connections=86
 [INFO] No se reiniciará el contenedor en modo dry-run.
-[INFO] pgbench exitoso en intento 1. TPS: 133.071531
-TPS obtenido: 133.071531
+[INFO] pgbench exitoso en intento 1. TPS: 186.64568
+TPS obtenido: 186.64568
 [INFO] Resumen en texto guardado en: results_autotune.txt
 
 Mejor configuración encontrada:
   shared_buffers: 512MB
   work_mem: 4MB
   max_connections: 89
-  Mejor TPS: 289.540769
+  Mejor TPS: 197.837434
 Resultados guardados en: results_autotune.json

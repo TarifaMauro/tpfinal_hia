@@ -30,6 +30,11 @@ export class Usuarios implements OnInit {
   filtrado: boolean = false; //Indica si se está filtrando por username
   editandoUsuario: boolean = false; //Indica si se está editando un usuario
 
+cursor: number | null = null;
+limit: number = 10;
+hasNext: boolean = true;
+cargando: boolean = false;
+
   constructor(
     private router: Router,
     private loginService: LoginService,
@@ -38,6 +43,8 @@ export class Usuarios implements OnInit {
   ) {
     this.formUsuario = this.fb.group(this.obtenerControlesFormulario());
   }
+
+  
 
   private obtenerControlesFormulario() {
     return {
@@ -72,19 +79,34 @@ export class Usuarios implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cargarUsuarios();
+    this.cargarUsuarios(true);
   }
 
-  cargarUsuarios() {
-    this.loginService.getUsers().subscribe({
-      next: (result) => {
-        this.usuarios = result.data;
-      },
-      error: (error) => {
-        this.mostrarError(error, 'Error al cargar los usuarios');
-      },
-    });
+   cargarUsuarios(reset: boolean = false) {
+  if (this.cargando) return;
+  this.cargando = true;
+
+  if (reset) {
+    this.cursor = null;
+    this.usuarios = [];
   }
+
+  const q = (this.username || '').trim();
+
+  this.loginService.obtenerUsuariosCursor(this.cursor, this.limit, q).subscribe({
+    next: (resp) => {
+      this.usuarios.push(...resp.items);
+      this.cursor = resp.nextCursor;
+      this.hasNext = resp.hasNext;
+      this.cargando = false;
+    },
+    error: (error) => {
+      this.cargando = false;
+      this.mostrarError(error, 'Error al cargar los usuarios');
+    },
+  });
+}
+
 
   mostrarDetallesUsuario(id: string, paraEditar: boolean = false) {
     this.loginService.getUserById(id).subscribe({
@@ -138,38 +160,10 @@ export class Usuarios implements OnInit {
     sessionStorage.setItem('apellido', apellido);
   }
 
-  filtrarUsuarios() {
-    const username = this.username?.trim();
-    if (!username) {
-      this.msgError = 'Debe ingresar un nombre de usuario para buscar';
-      return;
-    }
+ filtrarUsuarios() {
+  this.cargarUsuarios(true);
+}
 
-    //Evitar llamadas si el filtro no cambió
-    this.msgError = '';
-    if (username === this.ultimoUsernameBuscado) {
-      this.toastr.info('Acaba de realizar la misma búsqueda');
-      return;
-    }
-
-    this.ultimoUsernameBuscado = username;
-
-    this.loginService.getUsersByUsername(username).subscribe({
-      next: (result) => {
-        if (result.data.length === 0) {
-          this.toastr.info('No se encontraron usuarios con ese nombre');
-          return;
-        }
-
-        this.usuarios = result.data;
-        this.filtrado = true;
-        this.toastr.success('Usuarios encontrados: ' + this.usuarios.length);
-      },
-      error: (error) => {
-        this.mostrarError(error);
-      },
-    });
-  }
 
   eliminarUsuario(id: string, username: string) {
     const usuarioLogueado = sessionStorage.getItem('username');
@@ -209,12 +203,11 @@ export class Usuarios implements OnInit {
     });
   }
 
-  borrarFiltro() {
-    this.msgError = '';
-    this.username = '';
-    this.filtrado = false;
-    this.cargarUsuarios();
-  }
+ borrarFiltro() {
+  this.username = '';
+  this.cargarUsuarios(true);
+}
+
 
   crearUsuario() {
     this.router.navigate(['/form'], {
@@ -235,4 +228,5 @@ export class Usuarios implements OnInit {
     const errorMessage = error?.error?.msg || fallbackMessage;
     this.toastr.error(errorMessage);
   }
+
 }

@@ -224,6 +224,49 @@ router.get("/",
   productoCtrl.getProductos
 );
 
+// Obtener todos los productos paginados
+router.get("/paginados",
+  /*
+    #swagger.path = '/api/producto/paginados'
+    #swagger.tags = ['Productos']
+    #swagger.summary = 'Obtener todos los productos paginados'
+    #swagger.description = 'Devuelve una lista de todos los productos, incluyendo la categoría.'
+    #swagger.produces = ['application/json']
+    #swagger.responses[200] = {
+      description: 'Lista de productos obtenida exitosamente',
+      schema: {
+        status: 'OK',
+        msg: 'Productos obtenidos correctamente',
+        productos: [
+          {
+            _id: '60c72b2f9b1e8c001c8e4d3b',
+            nombre: 'Remera Azul',
+            descripcion: 'Remera de algodón color azul',
+            precio: 1500,
+            color: 'Azul',
+            imagenes: ['/uploads/imagen1.jpg'],
+            categoria: { _id: '60c72b2f9b1e8c001c8e4d3a', nombre: 'Ropa' },
+            tallas: [
+              { talla: 'S', stock: 10 },
+              { talla: 'M', stock: 5 },
+              { talla: 'L', stock: 2 }
+            ]
+          }
+        ]
+      }
+    }
+    #swagger.responses[500] = {
+      description: 'Error interno del servidor',
+      schema: {
+        status: 'ERROR',
+        msg: 'Error procesando operación',
+        causa: 'Descripción del error específico'
+      }
+    }
+  */
+  productoCtrl.obtenerProductosCursor
+);
+
 // Obtener productos por categoría
 router.get("/categoria/:categoriaNombre",
   /*

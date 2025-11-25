@@ -43,19 +43,22 @@ export class ProductDetailComponent implements OnInit {
      });
    }
   private loadRecommendedProducts(): void {
-    this.productoService.obtenerProductos().subscribe(
-      (productos) => {
-        // Filtra el producto actual y toma 4 aleatorios
-        this.recommendedProducts = productos
-          .filter(p => p._id !== this.currentProduct?._id)
-          .sort(() => 0.5 - Math.random())
-          .slice(0, 4);
-      },
-      (error) => {
-        console.error('Error al cargar recomendados:', error);
-      }
-    );
-  }
+  // Pedimos solo 100 productos del comienzo
+  this.productoService.obtenerProductosCursor(null, 100, '').subscribe(
+    (response) => {
+      const productos = response.items || [];
+
+      this.recommendedProducts = productos
+        .filter((p: { _id: string | undefined; }) => p._id !== this.currentProduct?._id)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 4);
+    },
+    (error) => {
+      console.error('Error al cargar recomendados:', error);
+    }
+  );
+}
+
 
   private loadProduct(id: string): void {
     this.productoService.obtenerProductoPorId(id).subscribe(

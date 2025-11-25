@@ -1,4 +1,5 @@
 const { User } = require('../models_sql');
+const { Op } = require('sequelize');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const sanitizeHtml = require('sanitize-html');
@@ -8,6 +9,50 @@ const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
 const googleClient = new OAuth2Client(GOOGLE_CLIENT_ID);
 
 const ctrl = {};
+ctrl.obtenerUsuariosCursor = async (req, res) => {
+  try {
+    const cursor = req.query.cursor || null;
+    const limit = Math.min(100, parseInt(req.query.limit) || 25);
+    const q = (req.query.q || '').trim();
+
+    const where = {};
+
+    if (q) {
+      where[Op.or] = [
+        { username: { [Op.iLike]: `%${q}%` } },
+        { email: { [Op.iLike]: `%${q}%` } },
+        { nombres: { [Op.iLike]: `%${q}%` } },
+        { apellido: { [Op.iLike]: `%${q}%` } }
+      ];
+    }
+
+    // Cursor basado en createdAt
+    if (cursor) {
+      where.createdAt = { [Op.gt]: new Date(cursor) };
+    }
+
+    const users = await User.findAll({
+      where,
+      limit,
+      order: [['createdAt', 'ASC']],
+      attributes: { exclude: ['password'] }
+    });
+
+    const last = users.length > 0 ? users[users.length - 1] : null;
+
+    return res.json({
+      items: users,
+      nextCursor: last ? last.createdAt : null,
+      hasNext: users.length === limit,
+    });
+
+  } catch (err) {
+    console.error('Error obtenerUsuariosCursor:', err);
+    return res.status(500).json({ msg: 'Error al obtener usuarios', error: err.message });
+  }
+};
+
+
 
 ctrl.createUsuario = async (req, res) => {
   try {

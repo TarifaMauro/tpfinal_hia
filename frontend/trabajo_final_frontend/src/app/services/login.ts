@@ -82,4 +82,14 @@ export class LoginService {
 
     return null;
   }
+
+ obtenerUsuariosCursor(cursor: number | null, limit: number, q: string) {
+  let params: any = { limit };
+
+  if (cursor) params.cursor = cursor;
+  if (q) params.q = q;
+
+  return this._http.get<any>(this.hostBase + 'paginados', { params });
+}
+
 }

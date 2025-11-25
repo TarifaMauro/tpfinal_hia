@@ -258,7 +258,6 @@ services:
 
     depends_on:
         - haproxy  
-
     environment:
       - DB_HOST=haproxy
       - DB_PORT=5432
@@ -271,6 +270,17 @@ services:
       - PORT=3001  
     networks:
       - postgres-cluster
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: contenedores_final_HIA/Dockerfile.frontend
+    image: frontend-image:latest
+    container_name: frontend-container
+    ports:
+      - "4200:80"
+    depends_on:
+       - backend
 
 volumes:
   etcd1_data:

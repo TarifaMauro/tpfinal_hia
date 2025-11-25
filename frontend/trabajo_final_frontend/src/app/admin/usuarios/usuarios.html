@@ -85,6 +85,15 @@
       </tbody>
     </table>
   </div>
+<button 
+  class="btn btn-primary mt-3 w-100"
+  (click)="cargarUsuarios()"
+  *ngIf="hasNext && !cargando">
+  Cargar más
+</button>
+
+<div class="text-center mt-3" *ngIf="cargando">
+  Cargando...
 </div>
 <!-- Modal para las operaciones sobre el Usuario-->
 <div

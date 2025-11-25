@@ -26,8 +26,10 @@ COPY scripts/carga_masiva.py /usr/src/app/backend/carga_masiva.py
 
 # Copiar entrypoint que espera a la DB antes de iniciar la app
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+
 # Convertir terminaciones de línea CRLF a LF (necesario en Windows)
 RUN sed -i 's/\r$//' /usr/local/bin/entrypoint.sh && chmod +x /usr/local/bin/entrypoint.sh
+
 
 # Exponer el puerto en el que la aplicación se ejecutará
 EXPOSE 3000

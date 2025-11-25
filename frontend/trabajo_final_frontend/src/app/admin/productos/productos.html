@@ -15,7 +15,9 @@
       [formControl]="busquedaControl" />
 
   </div>
-  <div class="productos-admin-content" *ngIf="productos.length > 0">
+
+  <!-- Lista de productos paginada -->
+  <div class="productos-admin-content" *ngIf="productos && productos.length > 0; else sinResultados">
     <div class="productos-lista">
       <!-- Ejemplo de card de producto -->
       <div class="producto-card" *ngFor="let producto of productos">
@@ -41,7 +43,25 @@
       </div>
     </div>
   </div>
+
+
+  
+  <button 
+    *ngIf="hasNext && !loading" 
+    (click)="cargarProductos()" 
+    class="btn btn-primary mt-3">
+    Cargar más
+  </button>
+
+  <div *ngIf="loading" class="mt-3 text-center">
+    Cargando...
+  </div>
 </div>
+  <!-- Mensaje sin resultados -->
+  <ng-template #sinResultados>
+    <p class="text-center">No se encontraron productos.</p>
+  </ng-template>
+
 
 <!-- Modal para agregar/editar producto -->
 <div class="modal fade" id="modalProducto" tabindex="-1" aria-labelledby="modalProductoLabel" aria-hidden="true">

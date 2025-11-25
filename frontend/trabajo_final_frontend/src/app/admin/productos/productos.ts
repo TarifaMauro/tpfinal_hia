@@ -1,13 +1,14 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Producto, ProductoService } from '../../services/producto';
 import { ProductoForm } from './producto-form/producto-form';
 import { ToastrService } from 'ngx-toastr';
 import { CategoriaForm } from './categoria-form/categoria-form';
 import { FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, Subscription, tap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, Subscription, tap, switchMap } from 'rxjs';
 
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-productos',
   imports: [CommonModule, CategoriaForm, ReactiveFormsModule, ProductoForm],
@@ -74,7 +75,6 @@ export class Productos implements OnInit, OnDestroy {
     });
   }
 
-
   abrirModal(producto?: Producto): void {
     if (producto) {
       this.productoSeleccionado = producto;
@@ -97,13 +97,12 @@ export class Productos implements OnInit, OnDestroy {
       )
       .subscribe((respuesta) => {
         this.productos = respuesta;
-      })
+      });
   }
+
   guardarProducto(productoForm: FormData) {
     if (this.productoSeleccionado) {
-
-      // actualizar
-
+      // ACTUALIZAR
       this.productoService.actualizarProducto(this.productoSeleccionado._id, productoForm).subscribe({
         next: (productoActualizado) => {
           // Reemplazamos el producto en la lista local
@@ -111,7 +110,6 @@ export class Productos implements OnInit, OnDestroy {
           if (index !== -1) {
             this.productos[index] = productoActualizado;
             this.productos = [...this.productos]; // Forzar refresco
-
           }
           this.toastr.success('Producto actualizado con éxito');
           this.cerrarModal();
@@ -120,11 +118,9 @@ export class Productos implements OnInit, OnDestroy {
         error: (err) => {
           this.toastr.error(err?.error?.msg ?? 'Error al actualizar');
         }
-      }
       });
-
     } else {
-      // crear
+      // CREAR
       this.productoService.crearProducto(productoForm).subscribe({
         next: (productoCreado) => {
           this.productos.push(productoCreado); // Añadimos sin recargar todo
@@ -135,7 +131,6 @@ export class Productos implements OnInit, OnDestroy {
         error: (err) => {
           this.toastr.error(err?.error?.msg ?? 'Error al crear');
         }
-      }
       });
     }
   }

@@ -245,19 +245,18 @@ services:
 
   # Backend Node.js
   backend:
-    build:
-      context: .
-      dockerfile: Dockerfile.backend
-    image: backend-image:latest
+    # build: ... <-- YA NO SE USA BUILD LOCALMENTE
+    image: maurotarifa/tpfinal_hia-backend:latest
     container_name: backend-container
+    pull_policy: always  # Fuerza a buscar actualizaciones al arrancar
     ports:
       - "3001:3001"
-    # Use a named volume for uploads directory to persist uploaded files
+
     volumes:
       - backend_data:/usr/src/app/backend/uploads
 
     depends_on:
-        - haproxy  
+       - haproxy 
     environment:
       - DB_HOST=haproxy
       - DB_PORT=5432
@@ -267,20 +266,75 @@ services:
       - PG_URI=postgres://postgres:postgres123@haproxy:5432/postgres
       - JWT_SECRET=Qw8!zP3@rT7vL2$kN9^bS5&xU1*eH6
       - NODE_ENV=development
-      - PORT=3001  
+      - PORT=3001 
     networks:
       - postgres-cluster
+    # ETIQUETA OBLIGATORIA PARA QUE WATCHTOWER LO ACTUALICE
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
 
   frontend:
-    build:
-      context: ..
-      dockerfile: contenedores_final_HIA/Dockerfile.frontend
-    image: frontend-image:latest
+    # build: ... <-- YA NO SE USA BUILD LOCALMENTE
+    image: maurotarifa/tpfinal_hia-frontend:latest
     container_name: frontend-container
+    pull_policy: always
     ports:
       - "4200:80"
     depends_on:
        - backend
+    networks: # Me aseguro que esté en la red correcta
+      - postgres-cluster
+    # ETIQUETA OBLIGATORIA PARA QUE WATCHTOWER LO ACTUALICE
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  # NEXTCLOUD - Base de Datos
+  nextcloud-db:
+    image: mariadb:10.6
+    container_name: nextcloud_db
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - nextcloud_db_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin123
+      - MYSQL_PASSWORD=admin123
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+    networks:
+      - postgres-cluster
+
+  # NEXTCLOUD - Aplicación
+  nextcloud-app:
+    image: nextcloud
+    container_name: nextcloud_app
+    restart: always
+    ports:
+      - "8081:80"  # Se usa 8081 para no chocar con pgadmin (8080)
+    depends_on:
+      - nextcloud-db
+    environment:
+      - MYSQL_PASSWORD=admin123
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=nextcloud-db
+    volumes:
+      - nextcloud_data:/var/www/html
+    networks:
+      - postgres-cluster
+
+  # SERVICIO DE DESPLIEGUE CONTINUO
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: unless-stopped
+    volumes:
+      # Necesario para controlar el motor de Docker
+      - /var/run/docker.sock:/var/run/docker.sock
+    # Revisa cada 30s, limpia imágenes viejas y SOLO toca los que tienen label
+    command: --interval 30 --cleanup --label-enable
+    networks:
+      - postgres-cluster
 
 volumes:
   etcd1_data:
@@ -293,6 +347,8 @@ volumes:
   grafana_data:
   pgadmin_data:
   backend_data:
+  nextcloud_db_data:
+  nextcloud_data:
 
 networks:
   postgres-cluster:

@@ -2,7 +2,7 @@ FROM postgres:15
 
 # Instalar dependencias
 RUN apt-get update && \
-    apt-get install -y python3-pip python3-dev libpq-dev gcc python3-venv && \
+    apt-get install -y python3-pip python3-dev libpq-dev gcc python3-venv postgresql-contrib && \
     rm -rf /var/lib/apt/lists/*
 
 # Crear entorno virtual para Patroni

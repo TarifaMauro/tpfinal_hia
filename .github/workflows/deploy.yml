@@ -12,13 +12,15 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v3
 
-      # PASO NUEVO: Prepara los archivos necesarios
-      # Copiamos el entrypoint desde contenedores hacia el backend y frontend
-      # para que Docker pueda encontrarlos dentro de su "contexto".
+      # --- CORRECCIÓN CRÍTICA: MOVER ARCHIVOS ---
+      # Copiamos el entrypoint.sh desde la carpeta de contenedores hacia 
+      # las carpetas de código para que Docker pueda encontrarlos al construir.
       - name: Mover Entrypoint y Configs
         run: |
+          echo "Copiando entrypoint al backend..."
           cp contenedores_final_HIA/entrypoint.sh backend/
-          # Si tu frontend también usa entrypoint, descomenta la siguiente línea:
+          
+          # Si el frontend también usa entrypoint, descomenta la linea de abajo:
           # cp contenedores_final_HIA/entrypoint.sh frontend/
 
       - name: Login en Docker Hub
@@ -27,7 +29,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # --- CONSTRUCCIÓN DEL BACKEND ---
+      # --- BACKEND ---
       - name: Build y Push Backend
         uses: docker/build-push-action@v4
         with:
@@ -36,14 +38,11 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/tpfinal_hia-backend:latest
 
-      # --- CONSTRUCCIÓN DEL FRONTEND ---
+      # --- FRONTEND ---
       - name: Build y Push Frontend
         uses: docker/build-push-action@v4
         with:
           context: ./frontend
           file: ./contenedores_final_HIA/Dockerfile.frontend
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/tpfinal_hia-frontend:latest
-          push: true
-          # Esto creará: maurotarifa/tpfinal_hia-frontend:latest
           tags: ${{ secrets.DOCKER_USERNAME }}/tpfinal_hia-frontend:latest

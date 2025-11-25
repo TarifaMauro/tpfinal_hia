@@ -1,39 +1,33 @@
-# base image
 FROM node:lts-alpine3.22
 
-# Instalar git, netcat, postgresql-client y Python (para el script de carga masiva)
+# Instalar dependencias del sistema
 RUN apk add --no-cache git netcat-openbsd postgresql-client python3 py3-pip
 
 # Establecer el directorio de trabajo
 WORKDIR /usr/src/app
 
-# Clonar el repositorio de la aplicación
-RUN git clone https://github.com/ignaMartin22/tpfinal_hia.git .
+# [CORRECCIÓN CLAVE]
+# Copiamos los archivos LOCALES (tu código) en lugar de clonar de internet
+COPY . .
 
-# Cambiar al directorio del backend
-# Cuando se clona el repo en '.', el backend queda en '/usr/src/app/backend'
-WORKDIR /usr/src/app/backend
-
-# Instalar dependencias de la aplicación
+# Instalar dependencias de la aplicación (Node.js)
 RUN npm install
 
 # Instalar dependencias de Python para el script de carga masiva
-# Usar --break-system-packages porque estamos en un contenedor Docker aislado
 RUN pip3 install --no-cache-dir --break-system-packages psycopg2-binary faker bcrypt
 
-# Copiar el script de carga masiva
-COPY scripts/carga_masiva.py /usr/src/app/backend/carga_masiva.py
+# Aseguramos que el script de carga masiva esté donde la app lo espera
+# (El workflow ya movió la carpeta scripts adentro del backend, así que esto funciona)
+RUN cp scripts/carga_masiva.py ./carga_masiva.py || echo "Advertencia: script no encontrado en ruta esperada"
 
-# Copiar entrypoint que espera a la DB antes de iniciar la app
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-
-# Convertir terminaciones de línea CRLF a LF (necesario en Windows)
+# Configuración del Entrypoint
+# (El workflow ya movió entrypoint.sh a la raíz del backend)
+RUN cp entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN sed -i 's/\r$//' /usr/local/bin/entrypoint.sh && chmod +x /usr/local/bin/entrypoint.sh
 
+# Exponemos el puerto 3001 (para coincidir con tu docker-compose)
+EXPOSE 3001
 
-# Exponer el puerto en el que la aplicación se ejecutará
-EXPOSE 3000
-
-# Usa entrypoint para esperar la DB y luego ejecutar la app
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-
+# Comando por defecto para iniciar la app (ajusta si tu script es server.js o index.js)
+CMD ["npm", "start"]

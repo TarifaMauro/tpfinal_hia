@@ -336,6 +336,27 @@ services:
     networks:
       - postgres-cluster
 
+  # SERVICIO DE BACKUPS AUTOMÁTICOS
+  db-backup:
+    image: prodrigestivill/postgres-backup-local
+    container_name: db-backup
+    restart: unless-stopped
+    environment:
+      - POSTGRES_HOST=haproxy
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres123
+      - POSTGRES_DB=postgres
+      - TZ=America/Argentina/Jujuy
+      - SCHEDULE=@daily
+      - BACKUP_KEEP_DAYS=7
+      - BACKUP_KEEP_WEEKS=4
+      - BACKUP_KEEP_MONTHS=6
+    volumes:
+      - backup_data:/backups
+    networks:
+      - postgres-cluster
+
 volumes:
   etcd1_data:
   etcd2_data:
@@ -349,6 +370,7 @@ volumes:
   backend_data:
   nextcloud_db_data:
   nextcloud_data:
+  backup_data:
 
 networks:
   postgres-cluster:

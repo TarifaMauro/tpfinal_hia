@@ -6,45 +6,45 @@ Modo: container | dry-run: True | commit: False | n_calls: 4
 [INFO] Encontrado contenedor con pgbench: postgres-replica2
 [INFO] Usando contenedor detectado para pgbench: postgres-replica2
 [INFO] Midiendo baseline (TPS actual) antes de cambios...
-[INFO] pgbench exitoso en intento 1. TPS: 126.338675
-[INFO] Baseline TPS: 126.338675
+[INFO] pgbench exitoso en intento 1. TPS: 532.43013
+[INFO] Baseline TPS: 532.43013
 
 Probando: shared_buffers=512MB, work_mem=4MB, max_connections=89
 [INFO] Nodo líder detectado via patronictl: postgres-master
 [DRY-RUN] Se habría actualizado el YAML con:
     shared_buffers=512MB, work_mem=4MB, max_connections=89
 [INFO] No se reiniciará el contenedor en modo dry-run.
-[INFO] pgbench exitoso en intento 1. TPS: 178.172221
-TPS obtenido: 178.172221
+[INFO] pgbench exitoso en intento 1. TPS: 578.844503
+TPS obtenido: 578.844503
 
 Probando: shared_buffers=256MB, work_mem=8MB, max_connections=55
 [INFO] Nodo líder detectado via patronictl: postgres-master
 [DRY-RUN] Se habría actualizado el YAML con:
     shared_buffers=256MB, work_mem=8MB, max_connections=55
 [INFO] No se reiniciará el contenedor en modo dry-run.
-[INFO] pgbench exitoso en intento 1. TPS: 146.578052
-TPS obtenido: 146.578052
+[INFO] pgbench exitoso en intento 1. TPS: 541.471307
+TPS obtenido: 541.471307
 
 Probando: shared_buffers=256MB, work_mem=8MB, max_connections=57
 [INFO] Nodo líder detectado via patronictl: postgres-master
 [DRY-RUN] Se habría actualizado el YAML con:
     shared_buffers=256MB, work_mem=8MB, max_connections=57
 [INFO] No se reiniciará el contenedor en modo dry-run.
-[INFO] pgbench exitoso en intento 1. TPS: 131.13317
-TPS obtenido: 131.13317
+[INFO] pgbench exitoso en intento 1. TPS: 550.081281
+TPS obtenido: 550.081281
 
 Probando: shared_buffers=256MB, work_mem=4MB, max_connections=86
 [INFO] Nodo líder detectado via patronictl: postgres-master
 [DRY-RUN] Se habría actualizado el YAML con:
     shared_buffers=256MB, work_mem=4MB, max_connections=86
 [INFO] No se reiniciará el contenedor en modo dry-run.
-[INFO] pgbench exitoso en intento 1. TPS: 184.517075
-TPS obtenido: 184.517075
+[INFO] pgbench exitoso en intento 1. TPS: 523.873409
+TPS obtenido: 523.873409
 [INFO] Resumen en texto guardado en: results_autotune.txt
 
 Mejor configuración encontrada:
-  shared_buffers: 256MB
+  shared_buffers: 512MB
   work_mem: 4MB
-  max_connections: 86
-  Mejor TPS: 184.517075
+  max_connections: 89
+  Mejor TPS: 578.844503
 Resultados guardados en: results_autotune.json

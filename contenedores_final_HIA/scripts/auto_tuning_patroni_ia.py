@@ -262,7 +262,7 @@ def detect_patroni_yml_path(container_name):
     return path if path else "/etc/patroni.yml"
 
 
-def run_pgbench_init(mode='local', client_container=None, haproxy_host='haproxy', haproxy_port=5432):
+def run_pgbench_init(mode='local', client_container=None, haproxy_host='haproxy', haproxy_port=5434):
     """Ejecuta `pgbench -i` para inicializar las tablas necesarias en la base de datos.
     Retorna True si la inicialización fue exitosa.
     """
@@ -409,7 +409,7 @@ def wait_for_postgres_ready(timeout=120, interval=5):
 
 
 def run_pgbench(clients=10, duration=30, retries=5, retry_wait=8,
-                mode='local', client_container=None, haproxy_host='haproxy', haproxy_port=5432):
+                mode='local', client_container=None, haproxy_host='haproxy', haproxy_port=5434):
     """
     Ejecuta pgbench con reintentos si falla la conexión o no hay TPS.
     """
@@ -587,7 +587,7 @@ def main():
     parser.add_argument("--mode", choices=['local', 'container'], default='local', help="Dónde ejecutar pgbench")
     parser.add_argument("--client-container", type=str, default=None, help="Nombre del contenedor cliente para ejecutar pgbench si mode=container")
     parser.add_argument("--haproxy-host", type=str, default='haproxy', help="Host HAProxy para pgbench (por defecto 'haproxy')")
-    parser.add_argument("--haproxy-port", type=int, default=5432, help="Puerto HAProxy para pgbench")
+    parser.add_argument("--haproxy-port", type=int, default=5434, help="Puerto HAProxy para pgbench")
     parser.add_argument("--rollback-threshold-percent", type=float, default=10.0, help="% de caída de TPS que activa rollback (default 10)")
     parser.add_argument("--max-lag-seconds", type=float, default=5.0, help="Segundos máximos de lag permitidos antes de rollback (default 5s)")
     parser.add_argument("--recheck-leader-each-iter", action='store_true', help="Re-detectar líder antes de cada intento (recomendado)")

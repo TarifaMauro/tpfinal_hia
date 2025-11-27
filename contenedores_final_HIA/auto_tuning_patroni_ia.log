@@ -3,48 +3,48 @@
 === OPTIMIZACIÓN INTELIGENTE DE PARÁMETROS CON IA (PATRONI) ===
 
 Modo: container | dry-run: True | commit: False | n_calls: 4
-[INFO] Encontrado contenedor con pgbench: postgres-replica2
-[INFO] Usando contenedor detectado para pgbench: postgres-replica2
+[INFO] Encontrado contenedor con pgbench: postgres-replica1
+[INFO] Usando contenedor detectado para pgbench: postgres-replica1
 [INFO] Midiendo baseline (TPS actual) antes de cambios...
-[INFO] pgbench exitoso en intento 1. TPS: 532.43013
-[INFO] Baseline TPS: 532.43013
+[INFO] pgbench exitoso en intento 1. TPS: 414.303176
+[INFO] Baseline TPS: 414.303176
 
 Probando: shared_buffers=512MB, work_mem=4MB, max_connections=89
 [INFO] Nodo líder detectado via patronictl: postgres-master
 [DRY-RUN] Se habría actualizado el YAML con:
     shared_buffers=512MB, work_mem=4MB, max_connections=89
 [INFO] No se reiniciará el contenedor en modo dry-run.
-[INFO] pgbench exitoso en intento 1. TPS: 578.844503
-TPS obtenido: 578.844503
+[INFO] pgbench exitoso en intento 1. TPS: 433.399815
+TPS obtenido: 433.399815
 
 Probando: shared_buffers=256MB, work_mem=8MB, max_connections=55
 [INFO] Nodo líder detectado via patronictl: postgres-master
 [DRY-RUN] Se habría actualizado el YAML con:
     shared_buffers=256MB, work_mem=8MB, max_connections=55
 [INFO] No se reiniciará el contenedor en modo dry-run.
-[INFO] pgbench exitoso en intento 1. TPS: 541.471307
-TPS obtenido: 541.471307
+[INFO] pgbench exitoso en intento 1. TPS: 247.45623
+TPS obtenido: 247.45623
 
 Probando: shared_buffers=256MB, work_mem=8MB, max_connections=57
 [INFO] Nodo líder detectado via patronictl: postgres-master
 [DRY-RUN] Se habría actualizado el YAML con:
     shared_buffers=256MB, work_mem=8MB, max_connections=57
 [INFO] No se reiniciará el contenedor en modo dry-run.
-[INFO] pgbench exitoso en intento 1. TPS: 550.081281
-TPS obtenido: 550.081281
+[INFO] pgbench exitoso en intento 1. TPS: 145.329175
+TPS obtenido: 145.329175
 
 Probando: shared_buffers=256MB, work_mem=4MB, max_connections=86
 [INFO] Nodo líder detectado via patronictl: postgres-master
 [DRY-RUN] Se habría actualizado el YAML con:
     shared_buffers=256MB, work_mem=4MB, max_connections=86
 [INFO] No se reiniciará el contenedor en modo dry-run.
-[INFO] pgbench exitoso en intento 1. TPS: 523.873409
-TPS obtenido: 523.873409
+[INFO] pgbench exitoso en intento 1. TPS: 165.676039
+TPS obtenido: 165.676039
 [INFO] Resumen en texto guardado en: results_autotune.txt
 
 Mejor configuración encontrada:
   shared_buffers: 512MB
   work_mem: 4MB
   max_connections: 89
-  Mejor TPS: 578.844503
+  Mejor TPS: 433.399815
 Resultados guardados en: results_autotune.json

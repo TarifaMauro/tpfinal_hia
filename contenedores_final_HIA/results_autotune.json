@@ -1,10 +1,10 @@
 {
-  "timestamp": "20251126T202132Z",
+  "timestamp": "20251127T222025Z",
   "best": {
     "shared_buffers": "512MB",
     "work_mem": "4MB",
     "max_connections": 89,
-    "tps": 578.844503
+    "tps": 433.399815
   },
   "all": [
     {
@@ -13,15 +13,15 @@
         "4MB",
         89
       ],
-      "tps": 578.844503,
+      "tps": 433.399815,
       "leader": "postgres-master",
       "lag_ok": true,
       "lag_details": {
-        "postgres-replica2": {
-          "lag_seconds": 0.268452
-        },
         "postgres-replica1": {
-          "lag_seconds": 0.483425
+          "lag_seconds": 0.477698
+        },
+        "postgres-replica2": {
+          "lag_seconds": 0.825764
         }
       },
       "rollback": false,
@@ -34,15 +34,15 @@
         "8MB",
         55
       ],
-      "tps": 541.471307,
+      "tps": 247.45623,
       "leader": "postgres-master",
       "lag_ok": true,
       "lag_details": {
-        "postgres-replica2": {
-          "lag_seconds": 0.321011
-        },
         "postgres-replica1": {
-          "lag_seconds": 0.48049
+          "lag_seconds": 0.502328
+        },
+        "postgres-replica2": {
+          "lag_seconds": 0.786102
         }
       },
       "rollback": false,
@@ -55,15 +55,15 @@
         "8MB",
         57
       ],
-      "tps": 550.081281,
+      "tps": 145.329175,
       "leader": "postgres-master",
       "lag_ok": true,
       "lag_details": {
-        "postgres-replica2": {
-          "lag_seconds": 0.382799
-        },
         "postgres-replica1": {
-          "lag_seconds": 0.544815
+          "lag_seconds": 0.382174
+        },
+        "postgres-replica2": {
+          "lag_seconds": 0.584324
         }
       },
       "rollback": false,
@@ -76,15 +76,15 @@
         "4MB",
         86
       ],
-      "tps": 523.873409,
+      "tps": 165.676039,
       "leader": "postgres-master",
       "lag_ok": true,
       "lag_details": {
-        "postgres-replica2": {
-          "lag_seconds": 0.324165
-        },
         "postgres-replica1": {
-          "lag_seconds": 0.484865
+          "lag_seconds": 0.437737
+        },
+        "postgres-replica2": {
+          "lag_seconds": 0.811393
         }
       },
       "rollback": false,
@@ -92,6 +92,6 @@
       "backup_path": null
     }
   ],
-  "baseline_tps": 532.43013,
+  "baseline_tps": 414.303176,
   "last_backup_path": null
 }

@@ -342,7 +342,7 @@ services:
     restart: unless-stopped
     environment:
       - POSTGRES_HOST=haproxy
-      - POSTGRES_PORT=5432
+      - POSTGRES_PORT=5434
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres123
       - POSTGRES_DB=postgres

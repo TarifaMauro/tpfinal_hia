@@ -141,9 +141,7 @@ services:
       - ./config/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
     ports:
       - "5000:5000"  # Puerto para estadísticas HAProxy
-      - "5432:5432"  # Puerto para escritura (postgres-write)
-      - "5433:5433"  # Puerto para lectura (postgres-read)
-      - "5435:5434"  # Puerto para conexiones mixtas (postgres-mixed)
+      - "5435:5434"  # Puerto para conexiones mixtas (postgres-mixed) - único pool activo
     depends_on:
       - postgres-master
       - postgres-replica1
@@ -259,11 +257,11 @@ services:
        - haproxy 
     environment:
       - DB_HOST=haproxy
-      - DB_PORT=5432
+      - DB_PORT=5434
       - DB_USER=postgres
       - DB_PASSWORD=postgres123
       - DB_NAME=postgres
-      - PG_URI=postgres://postgres:postgres123@haproxy:5432/postgres
+      - PG_URI=postgres://postgres:postgres123@haproxy:5434/postgres
       - JWT_SECRET=Qw8!zP3@rT7vL2$kN9^bS5&xU1*eH6
       - NODE_ENV=development
       - PORT=3001 
@@ -371,6 +369,7 @@ volumes:
   nextcloud_db_data:
   nextcloud_data:
   backup_data:
+  haproxy_socket:
 
 networks:
   postgres-cluster:

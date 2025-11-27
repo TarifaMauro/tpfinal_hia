@@ -278,6 +278,7 @@ services:
     pull_policy: always
     ports:
       - "4200:80"
+      - "443:443"
     depends_on:
        - backend
     networks: # Me aseguro que esté en la red correcta

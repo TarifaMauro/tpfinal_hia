@@ -146,3 +146,32 @@ curl http://localhost:5000/stats
 ---
 
 **Nota**: Este cluster está configurado para desarrollo y testing. Para producción, ajusta las configuraciones de seguridad según tus necesidades.
+
+
+Certificados SSL/TSL
+
+1. Ingresa a powershell como administrador y ejecuta: 
+
+Set-ExecutionPolicy Bypass -Scope Process -Force; `
+[System.Net.ServicePointManager]::SecurityProtocol = `
+[System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
+iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+2. Instalar mkcert
+
+choco install mkcert -y
+
+3. Instalar certificado raíz y aceptar el cartel que sale (Esto hace que Windows y Chrome confíen en tus certificados generados.)
+
+mkcert install
+
+4. Generar certificados para localhost:
+
+cd contenedores_final_HIA
+mkdir certs
+cd certs
+mkcert localhost
+
+## esto crea 
+## localhost.pem (certificado)
+## localhost-key.pem (clave privada)

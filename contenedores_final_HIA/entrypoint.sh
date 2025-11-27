@@ -46,10 +46,10 @@ echo "Esperando a que el backend cree las tablas..."
 sleep 10
 
 # Ejecutar script de carga masiva si no hay registros (solo una vez)
-if [ -f /usr/src/app/backend/carga_masiva.py ]; then
+if [ -f /usr/src/app/backend/scripts/carga_masiva.py ]; then
     echo "Verificando si es necesario ejecutar carga masiva..."
     # Usar PYTHONUNBUFFERED=1 y python3 -u para mostrar prints en tiempo real
-    PYTHONUNBUFFERED=1 python3 -u /usr/src/app/backend/carga_masiva.py || echo "Advertencia: El script de carga masiva no se ejecutó o ya existen datos"
+    PYTHONUNBUFFERED=1 python3 -u /usr/src/app/backend/scripts/carga_masiva.py || echo "Advertencia: El script de carga masiva no se ejecutó o ya existen datos"
 fi
 
 # Esperar al proceso de Node.js (mantener el contenedor corriendo)

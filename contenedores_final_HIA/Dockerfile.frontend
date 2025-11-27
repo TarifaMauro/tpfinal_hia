@@ -27,8 +27,16 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY contenedores_final_HIA/nginx.conf /etc/nginx/nginx.conf
 
 # Copiar certificados SSL
-COPY contenedores_final_HIA/certs/localhost.pem /etc/nginx/certs/localhost.pem
-COPY contenedores_final_HIA/certs/localhost-key.pem /etc/nginx/certs/localhost-key.pem
+# Crear carpeta de certificados
+RUN mkdir -p /etc/nginx/certs
+
+# Generar certificado autofirmado
+RUN apk add --no-cache openssl && \
+    openssl req -x509 -nodes -newkey rsa:2048 \
+    -keyout /etc/nginx/certs/localhost-key.pem \
+    -out /etc/nginx/certs/localhost.pem \
+    -subj "/C=AR/ST=Jujuy/L=San Salvador/O=LocalDev/CN=localhost" \
+    -days 365
 
 # 5. Copiar Script y limpiarlo (sed) por si se guardó en Windows
 COPY contenedores_final_HIA/scripts/mitigate_ddos.sh /usr/local/bin/mitigate_ddos.sh

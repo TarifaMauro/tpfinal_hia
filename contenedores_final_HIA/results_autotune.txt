@@ -1,18 +1,18 @@
 Autotuning run summary
-Timestamp (UTC): 20251127T225954Z
+Timestamp (UTC): 20251128T115826Z
 Mode: container | dry-run: True | commit: False | n_calls: 4
 
 Best configuration:
-  shared_buffers: 512MB
-  work_mem: 4MB
-  max_connections: 89
-  Mejor TPS: 398.546208
+  shared_buffers: 256MB
+  work_mem: 8MB
+  max_connections: 55
+  Mejor TPS: 122.422572
 
 All evaluated configurations (params -> TPS):
-  ['512MB', '4MB', 89] -> 398.546208
-  ['256MB', '8MB', 55] -> 394.141245
-  ['256MB', '8MB', 57] -> 169.481077
-  ['256MB', '4MB', 86] -> 224.213208
+  ['512MB', '4MB', 89] -> 119.539349
+  ['256MB', '8MB', 55] -> 122.422572
+  ['256MB', '8MB', 57] -> 89.23627
+  ['256MB', '4MB', 86] -> 115.913094
 
 JSON results file: results_autotune.json
 Combined log file: auto_tuning_patroni_ia.log
